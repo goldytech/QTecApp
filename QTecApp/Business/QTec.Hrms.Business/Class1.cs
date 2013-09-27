@@ -12,5 +12,10 @@ namespace QTec.Hrms.Business
         {
             
         }
+
+        public void TestSync1()
+        {
+
+        }
     }
 }
