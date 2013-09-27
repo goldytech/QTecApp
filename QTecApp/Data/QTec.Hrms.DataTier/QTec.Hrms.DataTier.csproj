@@ -46,11 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IEmployeeRepository.cs" />
+    <Compile Include="Contracts\IQTecUnitOfWork.cs" />
+    <Compile Include="Contracts\IRepositoryProvider.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QTecDataContext.cs" />
+    <Compile Include="QTecDbInitializer.cs" />
+    <Compile Include="QTecUnitOfWork.cs" />
+    <Compile Include="Repositories\EFRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\RepositoryFactories.cs" />
+    <Compile Include="Repositories\RepositoryProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
