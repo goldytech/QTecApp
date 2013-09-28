@@ -120,7 +120,50 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="app\animations\listAnimations.js" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\aboutController.js" />
+    <Content Include="app\controllers\personal\employeeEditController.js" />
+    <Content Include="app\controllers\personal\employeesController.js" />
+    <Content Include="app\controllers\navBarController.js" />
+    <Content Include="app\directives\wcOverlay.js" />
+    <Content Include="app\directives\wcUnique.js" />
+    <Content Include="app\filters\nameCityStateFilter.js" />
+    <Content Include="app\partials\dialog.html" />
+    <Content Include="app\partials\modal.html" />
+    <Content Include="app\services\customersService.js" />
+    <Content Include="app\services\dataService.js" />
+    <Content Include="app\services\dialogService.js" />
+    <Content Include="app\services\modalService.js" />
+    <Content Include="Content\animations.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.icon-large.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\angularShield.png" />
+    <Content Include="Content\images\appFolders.png" />
+    <Content Include="Content\images\ColorPalette.png" />
+    <Content Include="Content\images\customerApp.png" />
+    <Content Include="Content\images\female.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\glyphicons.png" />
+    <Content Include="Content\images\male.png" />
+    <Content Include="Content\images\people.png" />
+    <Content Include="Content\images\report.png" />
+    <Content Include="Content\images\spinner.gif" />
+    <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-ui-bootstrap.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\to%24q.js" />
+    <Content Include="Scripts\TweenMax.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -138,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
