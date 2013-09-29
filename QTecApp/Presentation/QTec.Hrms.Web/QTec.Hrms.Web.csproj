@@ -42,6 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -110,6 +113,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\NinjectDependencyResolver.cs" />
+    <Compile Include="App_Start\NinjectDependencyScope.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +190,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\QTec.Hrms.Business\QTec.Hrms.Business.csproj">
+      <Project>{7c39be9c-5adf-4b73-8a32-10059025c8ab}</Project>
+      <Name>QTec.Hrms.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\QTec.Hrms.DataTier\QTec.Hrms.DataTier.csproj">
+      <Project>{a22be18f-34b1-4589-82e1-7f0cb02b6f6a}</Project>
+      <Name>QTec.Hrms.DataTier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\QTec.Hrms.Models\QTec.Hrms.Models.csproj">
+      <Project>{d15d1dfe-8f7a-4b60-ae9f-2cae01050907}</Project>
+      <Name>QTec.Hrms.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Reports\QTec.Hrms.Reports\QTec.Hrms.Reports.csproj">
+      <Project>{0a8b101e-7f28-45e2-9b87-25bc200f513a}</Project>
+      <Name>QTec.Hrms.Reports</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

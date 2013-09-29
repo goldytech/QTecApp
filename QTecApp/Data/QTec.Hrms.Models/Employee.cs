@@ -53,5 +53,10 @@
         [Required, MaxLength(50)]
         public string Email { get; set; }
 
+        /// <summary>
+        /// Gets or sets the gender.
+        /// </summary>
+        [MaxLength(10)]
+        public string Gender { get; set; }
     }
 }
