@@ -11,7 +11,8 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="QTecDataContext"/> class.
         /// </summary>
-        public QTecDataContext() : base("nameOrConnectionString=QTec")
+        public QTecDataContext()
+            : base(nameOrConnectionString: "QTec")
         {
             Database.SetInitializer(new QTecDbInitializer());
         }

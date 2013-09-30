@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    app.register.controller('EmployeesController', ['$scope', '$location', '$filter', 'dataService', 'modalService',
+    app.controller('EmployeesController', ['$scope', '$location', '$filter', 'dataService', 'modalService',
         function ($scope, $location, $filter, dataService, modalService) {
 
         $scope.employees = [];
@@ -38,7 +38,7 @@ define(['app'], function (app) {
         };
 
         function getEmployees() {
-            dataService.getCustomersSummary($scope.currentPage - 1, $scope.pageSize)
+            dataService.getEmployees($scope.currentPage - 1, $scope.pageSize)
             .then(function (data) {
                 $scope.totalRecords = data.totalRecords;
                 $scope.employees = data.results;
@@ -55,9 +55,9 @@ define(['app'], function (app) {
 
         function getEmployeeById(id) {
             for (var i = 0; i < $scope.employees.length; i++) {
-                var cust = $scope.employees[i];
-                if (cust.id === id) {
-                    return cust;
+                var emp = $scope.employees[i];
+                if (emp.employeeId === id) {
+                    return emp;
                 }
             }
         }        
@@ -74,7 +74,7 @@ define(['app'], function (app) {
             };
 
             modalService.showModal({}, modalOptions).then(function (result) {
-                dataService.deleteEmployee(id).then(function () {
+               dataService.deleteEmployee(id).then(function () {
                     for (var i = 0; i < $scope.employees.length; i++) {
                         if ($scope.employees[i].id == id) {
                             $scope.employees.splice(i, 1);
@@ -91,9 +91,8 @@ define(['app'], function (app) {
         $scope.ViewEnum = {
             Card: 0,
             List: 1
-        }
-
-        $scope.changeView = function (view) {
+        };
+            $scope.changeView = function (view) {
             switch (view) {
                 case $scope.ViewEnum.Card:
                     $scope.listViewEnabled = false;
@@ -102,13 +101,11 @@ define(['app'], function (app) {
                     $scope.listViewEnabled = true;
                     break;
             }
-        }
-
-        $scope.navigate = function (url) {
+        };
+            $scope.navigate = function (url) {
             $location.path(url);
-        }
-
-        $scope.setOrder = function (orderby) {
+        };
+            $scope.setOrder = function (orderby) {
             if (orderby === $scope.orderby) {
                 $scope.reverse = !$scope.reverse;
             }

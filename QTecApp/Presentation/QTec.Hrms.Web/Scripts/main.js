@@ -13,7 +13,9 @@ require(
         'services/dataService',
         'services/modalService',
         'filters/nameCityStateFilter',
-        'controllers/navbarController'
+        'controllers/navbarController',
+        'controllers/personal/employeesController',
+        'controllers/personal/employeeEditController'
         
     ],
     function () {

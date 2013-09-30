@@ -1,7 +1,7 @@
 ﻿#region License QTec
 ////---------------------------------------------------------------------------------------------------------------------------------------------------------
 // <copyright file="Designation.cs" company="QTec">
-//      License under GPL
+//      License under MIT
 // </copyright>
 // <summary>
 //      Represents a class for Designation.
@@ -12,6 +12,7 @@
 namespace QTec.Hrms.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// The designation.
@@ -21,6 +22,7 @@ namespace QTec.Hrms.Models
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         /// <summary>

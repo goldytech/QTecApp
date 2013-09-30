@@ -2,19 +2,19 @@
 
 define(['app'], function (app) {
     app.filter('nameCityStateFilter', function () {
-        return function (customers, filterValue) {
-            if (!filterValue) return customers;
+        return function (employees, filterValue) {
+            if (!filterValue) return employees;
 
             var matches = [];
             filterValue = filterValue.toLowerCase();
-            for (var i = 0; i < customers.length; i++) {
-                var cust = customers[i];
-                if (cust.firstName.toLowerCase().indexOf(filterValue) > -1 ||
-                    cust.lastName.toLowerCase().indexOf(filterValue) > -1 ||
-                    cust.city.toLowerCase().indexOf(filterValue) > -1 ||
-                    cust.state.name.toLowerCase().indexOf(filterValue) > -1) {
+            for (var i = 0; i < employees.length; i++) {
+                var emp = employees[i];
+                if (emp.firstName.toLowerCase().indexOf(filterValue) > -1 ||
+                    emp.lastName.toLowerCase().indexOf(filterValue) > -1 ||
+                    emp.designation.name.toLowerCase().indexOf(filterValue) > -1 
+                    ) {
 
-                    matches.push(cust);
+                    matches.push(emp);
 
                 }
             }

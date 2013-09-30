@@ -21,13 +21,38 @@ define([], function () {
 
             
 
-            $routeProvider
-                .when('/employees', route.resolve('Customers', 'employees/'))
-                .when('/customerorders/:customerID', route.resolve('CustomerOrders', 'employees/'))
-                .when('/customeredit/:customerID', route.resolve('CustomerEdit', 'employees/'))
-                .when('/orders', route.resolve('Orders', 'orders/'))
-                .when('/about', route.resolve('About'))
-                .otherwise({ redirectTo: '/employees' });
+            $routeProvider.when('/', {
+                templateUrl: '/Personal/Employees',
+                controller: 'EmployeesController'
+            });
+            $routeProvider.when('/about', {
+                templateUrl: '/Personal/About',
+                controller: 'AboutController'
+            });
+            //$routeProvider.when('/QReports/EmpFilterRpt', {
+            //    templateUrl: '/reports/EmployeeFilterReport',
+            //    controller: 'empRptCtrlr'
+            //});
+            //$routeProvider.when('/detail/:id', {
+            //    templateUrl: '/Home/Edit',
+            //    controller: 'editCtrlr'
+            //});
+            //$routeProvider.when('/edit/:id', {
+            //    templateUrl: '/Home/Edit',
+            //    controller: 'editCtrl'
+            //});
+            //$routeProvider.when('/create', {
+            //    templateUrl: '/Home/Edit',
+            //    controller: 'editCtrlr'
+            //});
+            //$routeProvider.when('/delete/:id', {
+            //    templateUrl: '/Home/Detail',
+            //    controller: 'detailCtrl',
+            //    isDeleteRequested: true
+            //});
+            $routeProvider.otherwise({
+                redirectTo: '/'
+            });
 
     }]);
 

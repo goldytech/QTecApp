@@ -10,10 +10,7 @@ namespace QTec.Hrms.DataTier
     /// </summary>
     public class QTecUnitOfWork : IQTecUnitOfWork, IDisposable
     {
-        /// <summary>
-        /// The repository provider.
-        /// </summary>
-        private readonly IRepositoryProvider repositoryProvider;
+       
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QTecUnitOfWork" /> class.
@@ -22,8 +19,8 @@ namespace QTec.Hrms.DataTier
         public QTecUnitOfWork(IRepositoryProvider repositoryProvider)
         {
             this.DbContext = new QTecDataContext();
-            this.repositoryProvider = repositoryProvider;
-            this.repositoryProvider.DbContext = this.DbContext;
+            this.RepositoryProvider = repositoryProvider;
+            this.RepositoryProvider.DbContext = this.DbContext;
         }
 
         /// <summary>
@@ -32,8 +29,19 @@ namespace QTec.Hrms.DataTier
         /// </summary>
         public void Dispose()
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (this.DbContext != null)
+                {
+                    this.DbContext.Dispose();
+                }
+            }
         }
 
         /// <summary>
@@ -65,8 +73,7 @@ namespace QTec.Hrms.DataTier
         /// </summary>
         public void Commit()
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+            
         }
 
         protected IRepositoryProvider RepositoryProvider

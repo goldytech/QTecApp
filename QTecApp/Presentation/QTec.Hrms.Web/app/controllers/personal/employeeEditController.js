@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    app.register.controller('EmployeeEditController', ['$scope', '$location', '$routeParams', '$timeout',  'dataService', 'modalService',
+    app.controller('EmployeeEditController', ['$scope', '$location', '$routeParams', '$timeout',  'dataService', 'modalService',
         function ($scope, $location, $routeParams, $timeout, dataService, modalService) {
 
         var employeeID = ($routeParams.employeeID) ? parseInt($routeParams.employeeID) : 0,

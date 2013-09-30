@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,10 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IEmployeeManager.cs" />
+    <Compile Include="Personal\EmployeeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <ProjectReference Include="..\..\Data\QTec.Hrms.DataTier\QTec.Hrms.DataTier.csproj">
+      <Project>{a22be18f-34b1-4589-82e1-7f0cb02b6f6a}</Project>
+      <Name>QTec.Hrms.DataTier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\QTec.Hrms.Models\QTec.Hrms.Models.csproj">
+      <Project>{d15d1dfe-8f7a-4b60-ae9f-2cae01050907}</Project>
+      <Name>QTec.Hrms.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

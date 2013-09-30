@@ -32,5 +32,14 @@ namespace QTec.Hrms.DataTier.Repositories
             return false;
 
         }
+
+        /// <summary>
+        /// Gets the employees with designation.
+        /// </summary>
+        /// <returns>IQueryable of Employees</returns>
+        public IQueryable<Employee> GetEmployeesWithDesignation()
+        {
+            return this.DbContext.Set<Employee>().Include("Designation");
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace QTec.Hrms.DataTier.Contracts
 {
+    using System.Linq;
+
     using QTec.Hrms.Models;
 
     /// <summary>
@@ -13,5 +15,7 @@
         /// <param name="emailId">The email id.</param>
         /// <returns>true if exists else returns false</returns>
         bool IsEmailDuplicate(string emailId);
+
+        IQueryable<Employee> GetEmployeesWithDesignation();
     }
 }
