@@ -1,0 +1,134 @@
+﻿<div class="view">
+    <div class="container">
+        <header>
+            <h3>{{title}} Employee</h3>
+        </header>
+        <form name="editForm" novalidate>
+            <div>
+                
+                <div class="row">
+                    <div class="span2">
+                        Employee Id:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="Id" data-ng-model="employee.employeeId" required data-qtec-focus="true" />
+                        <span class="errorMessage" data-ng-show="editForm.Id.$dirty && editForm.Id.$error.required">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="span2">
+                        First Name:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="firstName" data-ng-model="employee.firstName" required />
+                        <span class="errorMessage" ng-show="editForm.firstName.$dirty && editForm.firstName.$error.required">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Last Name:
+                    </div>
+                    <div class="span10">
+                        <input type="text" data-ng-model="employee.lastName" required />
+                        <span class="errorMessage" ng-show="editForm.lastName.$dirty && editForm.lastName.$invalid">
+                            Last name is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Gender:
+                    </div>
+                    <div class="span10">
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Male" 
+                                data-ng-checked="employee.gender == 'male'" 
+                                data-ng-model="employee.gender" />
+                            Male
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Female" 
+                                data-ng-checked="employee.gender == 'female'" 
+                                data-ng-model="employee.gender" />
+                            Female
+                            <br />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Email:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="email"
+                            data-ng-model="employee.email" 
+                            data-qtec-unique=""
+                            required /> 
+                        <span class="errorMessage" data-ng-show="editForm.email.$error.unique">
+                            Email already in use
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Salary:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="salary" data-ng-model="employee.salary" required />
+                        <span class="errorMessage" ng-show="editForm.salary.$dirty && editForm.salary.$error.required">
+                            Salary is required
+                        </span>                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Designation:
+                    </div>
+                    <div class="span10">
+                        <select name="designation" required
+                            data-ng-model="employee.designationId" 
+                            data-ng-options="designation.id as designation.name for designation in designations">
+                            <option value=""></option>
+                        </select>
+                        <span class="errorMessage" ng-show="editForm.designation.$dirty && editForm.state.$error.required">
+                            Designation is required
+                        </span>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        BirthDate:
+                    </div>
+                    <div class="span10">
+                        <input type="date" name="birthdate" data-ng-model="employee.dateOfBirth" required datepicker-popup="dd-MMMM-yyyy" open="opened" datepicker-options="dateOptions" />
+                        <span class="errorMessage" ng-show="editForm.birthdate.$dirty && editForm.birthdate.$error.required">
+                            Birth date is required
+                        </span>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span12">
+                        <button type="submit" class="btn btn-primary" data-ng-click="saveEmployee()" ng-disabled="editForm.$invalid">{{buttonText}}</button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" data-ng-if="employee.id > 0" data-ng-click="deleteCustomer()">Delete</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <br />
+                    <div class="span10 label label-success show-hide-animation" data-ng-show="updateStatus">
+                        <i class="icon-thumbs-up icon-white"></i>&nbsp;&nbsp;Success!
+                    </div>
+                    <div class="span10 label label-important show-hide-animation" data-ng-show="errorMessage">
+                        <i class="icon-thumbs-down icon-white"></i>&nbsp;&nbsp;Error: {{ errorMessage }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

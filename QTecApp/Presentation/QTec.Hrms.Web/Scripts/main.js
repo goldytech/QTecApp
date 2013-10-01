@@ -10,6 +10,7 @@ require(
         'app',
         'directives/wcUnique',
         'directives/wcOverlay',
+        'directives/wcFocus',
         'services/dataService',
         'services/modalService',
         'filters/nameCityStateFilter',

@@ -23,17 +23,16 @@ define(['app'], function (app) {
                     return results.data;
                 });                
         };
-        employeeFactory.checkUniqueValue = function (id, property, value) {
-            if (!id) id = 0;
-            return $http.get(serviceBase + 'checkUnique/' + id + '?property=' + property + '&value=' + escape(value)).then(
+        employeeFactory.checkUniqueValue = function (value) {
+         return $http.get(serviceBase + 'IsEmailUnique?email=' + escape(value)).then(
                 function (results) {
-                    return results.data.status;
+                    return results.data;
                 });
         };
 
         employeeFactory.insertEmployee = function (employee) {
             return $http.post(serviceBase + 'postEmployee', employee).then(function (results) {
-                employee.id = results.data.id;
+                employee.employeeId = results.data.id;
                 return results.data;
             });
         };
@@ -43,7 +42,7 @@ define(['app'], function (app) {
         };
 
         employeeFactory.updateEmployee = function (employee) {
-            return $http.put(serviceBase + 'putEmployee/' + employee.id, employee).then(function (status) {
+            return $http.put(serviceBase + 'putEmployee/' + employee.employeeId, employee).then(function (status) {
                 return status.data;
             });
         };

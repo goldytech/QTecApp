@@ -29,28 +29,11 @@ define([], function () {
                 templateUrl: '/Personal/About',
                 controller: 'AboutController'
             });
-            //$routeProvider.when('/QReports/EmpFilterRpt', {
-            //    templateUrl: '/reports/EmployeeFilterReport',
-            //    controller: 'empRptCtrlr'
-            //});
-            //$routeProvider.when('/detail/:id', {
-            //    templateUrl: '/Home/Edit',
-            //    controller: 'editCtrlr'
-            //});
-            //$routeProvider.when('/edit/:id', {
-            //    templateUrl: '/Home/Edit',
-            //    controller: 'editCtrl'
-            //});
-            //$routeProvider.when('/create', {
-            //    templateUrl: '/Home/Edit',
-            //    controller: 'editCtrlr'
-            //});
-            //$routeProvider.when('/delete/:id', {
-            //    templateUrl: '/Home/Detail',
-            //    controller: 'detailCtrl',
-            //    isDeleteRequested: true
-            //});
-            $routeProvider.otherwise({
+            $routeProvider.when('/employeeedit/:employeeID', {
+                templateUrl: '/Personal/EmployeeEdit',
+                controller: 'EmployeeEditController'
+            });
+           $routeProvider.otherwise({
                 redirectTo: '/'
             });
 

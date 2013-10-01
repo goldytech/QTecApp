@@ -13,6 +13,16 @@ define(['app'], function (app) {
         $scope.buttonText = (employeeID > 0) ? 'Update' : 'Add';
         $scope.updateStatus = false;
         $scope.errorMessage = '';
+        $scope.opened = false;
+        $scope.dateOptions = {
+            'year-format': "'yy'",
+            'starting-day': 1
+        };
+        $scope.open = function () {
+            $timeout(function () {
+                $scope.opened = true;
+            });
+        };
 
         init();
 
@@ -42,7 +52,8 @@ define(['app'], function (app) {
 
         $scope.saveEmployee = function () {
             if ($scope.editForm.$valid) {
-                if (!$scope.employee.id) {
+                if (employeeID == 0) //comparing the query string of employeeID
+                {
                     dataService.insertEmployee($scope.employee).then(processSuccess, processError);
                 }
                 else {
@@ -52,11 +63,11 @@ define(['app'], function (app) {
         };
 
         $scope.deleteEmployee = function () {
-            var custName = $scope.employee.firstName + ' ' + $scope.employee.lastName;
+            var empName = $scope.employee.firstName + ' ' + $scope.employee.lastName;
             var modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Delete Customer',
-                headerText: 'Delete ' + custName + '?',
+                actionButtonText: 'Delete Employee',
+                headerText: 'Delete ' + empName + '?',
                 bodyText: 'Are you sure you want to delete this employee?'
             };
 
@@ -69,8 +80,6 @@ define(['app'], function (app) {
 
         function processSuccess() {
             $scope.updateStatus = true;
-            $scope.title = 'Edit';
-            $scope.buttonText = 'Update';
             startTimer();
         }
 

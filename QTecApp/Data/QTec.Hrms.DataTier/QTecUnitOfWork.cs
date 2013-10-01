@@ -73,7 +73,7 @@ namespace QTec.Hrms.DataTier
         /// </summary>
         public void Commit()
         {
-            
+            this.DbContext.SaveChanges();
         }
 
         protected IRepositoryProvider RepositoryProvider

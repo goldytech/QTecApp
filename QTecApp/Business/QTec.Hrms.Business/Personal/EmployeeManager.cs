@@ -1,9 +1,8 @@
 ﻿namespace QTec.Hrms.Business.Personal
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
+    using System.Collections.Generic;
     using System.Linq;
-
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
@@ -32,6 +31,25 @@
         #endregion
 
         /// <summary>
+        /// Gets the designations.
+        /// </summary>
+        /// <returns>List of Designation</returns>
+        public List<Designation> GetDesignations()
+        {
+            return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
+        }
+
+        /// <summary>
+        /// Determines whether  email is unique
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>true if exists else return false</returns>
+        public bool IsEmailUnique(string email)
+        {
+            return this.qTecUnitOfWork.EmployeeRepository.IsEmailDuplicate(email);
+        }
+
+        /// <summary>
         /// Gets the employee by id.
         /// </summary>
         /// <param name="id">The id.</param>
@@ -47,7 +65,8 @@
         /// <param name="employee">The employee.</param>
         public void AddEmployee(Employee employee)
         {
-            
+            this.qTecUnitOfWork.EmployeeRepository.Add(employee);
+            this.qTecUnitOfWork.Commit();
         }
 
         /// <summary>
@@ -56,8 +75,8 @@
         /// <param name="employee">The employee.</param>
         public void UpdateEmployee(Employee employee)
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+            this.qTecUnitOfWork.EmployeeRepository.Update(employee);
+            this.qTecUnitOfWork.Commit();
         }
 
         /// <summary>

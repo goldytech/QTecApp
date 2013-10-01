@@ -156,6 +156,7 @@
     <Content Include="app\controllers\personal\employeeEditController.js" />
     <Content Include="app\controllers\personal\employeesController.js" />
     <Content Include="app\controllers\navBarController.js" />
+    <Content Include="app\directives\wcFocus.js" />
     <Content Include="app\directives\wcOverlay.js" />
     <Content Include="app\directives\wcUnique.js" />
     <Content Include="app\filters\nameCityStateFilter.js" />
@@ -237,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Personal\About.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Personal\EmployeeEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
