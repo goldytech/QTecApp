@@ -24,7 +24,7 @@ define(['app'], function (app) {
                 });                
         };
         employeeFactory.checkUniqueValue = function (value) {
-         return $http.get(serviceBase + 'IsEmailUnique?email=' + escape(value)).then(
+         return $http.get(serviceBase + 'IsEmailUnique? =' + escape(value)).then(
                 function (results) {
                     return results.data;
                 });

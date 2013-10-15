@@ -14,6 +14,7 @@ define(['app'], function (app) {
         $scope.updateStatus = false;
         $scope.errorMessage = '';
         $scope.opened = false;
+        $scope.percentageDone = 0;
         $scope.dateOptions = {
             'year-format': "'yy'",
             'starting-day': 1
@@ -39,7 +40,24 @@ define(['app'], function (app) {
             }
             getDesignations();
         }
+        $scope.progress = function (percentDone) {
+            $scope.percentageDone = percentDone;
+        };
+         
+        $scope.done = function (files, data) {
 
+            $scope.percentageDone = 100;
+
+        };
+
+            $scope.error = function(files, type, msg) {
+                $scope.errorMessage = "Upload error: " + msg;
+
+            };
+            
+            $scope.uploadFinished = function (e, data) {
+                $scope.percentageDone = 100;
+            };
         function getDesignations() {
             dataService.getDesignations().then(function (designations) {
                 $scope.designations = designations;

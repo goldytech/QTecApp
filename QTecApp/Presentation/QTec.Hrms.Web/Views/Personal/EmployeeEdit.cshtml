@@ -3,7 +3,7 @@
         <header>
             <h3>{{title}} Employee</h3>
         </header>
-        <form name="editForm" novalidate>
+        <form name="editForm" novalidate enctype="multipart/form-data">
             <div>
                 
                 <div class="row">
@@ -66,11 +66,11 @@
                     <div class="span10">
                         <input type="text" name="email"
                             data-ng-model="employee.email" 
-                            data-qtec-unique=""
+                            @*data-qtec-unique=""*@
                             required /> 
-                        <span class="errorMessage" data-ng-show="editForm.email.$error.unique">
+                        @*<span class="errorMessage" data-ng-show="editForm.email.$error.unique">
                             Email already in use
-                        </span>
+                        </span>*@
                     </div>
                 </div>
                 <div class="row">
@@ -110,6 +110,29 @@
                         </span>  
                     </div>
                 </div>
+                  <div class="row">
+                    <div class="span2">
+                        Upload photo
+                    </div>
+                      <div class="span10">
+                          <input id="testUpload" type="file" jqfileupload name="files[]" data-url="/files" multiple done="uploadFinished(e, data)">
+                          @* <qtecfileupload
+                            auto-upload='false'
+                            choose-file-button-text='Choose file'
+                            choose-file-button-style='btn btn-primary'
+                            upload-file-button-text='Upload file'
+                            upload-file-button-style='btn btn-primary'
+                            upload-url='http://localhost:50286/files'
+                            max-file-size-mb='5'
+                            get-additional-data='getData(files)'
+                            on-done='done(files, data)'
+                            on-progress='progress(percentDone)'
+                            on-error='error(files, type, msg)' />*@
+                      </div>
+                    <div class="span5">
+                        <progress percent="percentageDone"></progress>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="span12">
                         <button type="submit" class="btn btn-primary" data-ng-click="saveEmployee()" ng-disabled="editForm.$invalid">{{buttonText}}</button>
@@ -126,6 +149,8 @@
                         <i class="icon-thumbs-down icon-white"></i>&nbsp;&nbsp;Error: {{ errorMessage }}
                     </div>
                 </div>
+                
+              
             </div>
         </form>
     </div>

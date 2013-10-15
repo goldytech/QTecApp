@@ -11,6 +11,7 @@ require(
         'directives/wcUnique',
         'directives/wcOverlay',
         'directives/wcFocus',
+        'directives/wcjqFileUpload',
         'services/dataService',
         'services/modalService',
         'filters/nameCityStateFilter',
