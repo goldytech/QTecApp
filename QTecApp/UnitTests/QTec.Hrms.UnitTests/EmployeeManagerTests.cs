@@ -18,7 +18,7 @@ namespace QTec.Hrms.UnitTests
     using Telerik.JustMock;
 
     [TestClass]
-    public class UnitTest1
+    public class EmployeeManagerTests
     {
         private IUnityContainer container;
         [TestInitialize]
