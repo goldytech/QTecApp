@@ -9,6 +9,7 @@ namespace QTec.Hrms.UnitTests
     using Microsoft.Practices.Unity;
 
     using QTec.Hrms.Business.Contracts;
+    using QTec.Hrms.Business.CustomExceptions;
     using QTec.Hrms.Business.Personal;
     using QTec.Hrms.DataTier;
     using QTec.Hrms.DataTier.Contracts;
@@ -82,6 +83,45 @@ namespace QTec.Hrms.UnitTests
             var actualValue = classunderTest.IsEmailUnique("afzal@quipment.in");
 
             Assert.AreEqual(ExpectedValue,actualValue);
+        }
+
+        [TestMethod]
+        public void Valid_Employee_Should_Be_Returned_When_Requested()
+        {
+            // ARRANGE
+            var expectedEmployee = new Employee
+                                       {
+                                           EmployeeId = 1, 
+                                           DateOfBirth = new DateTime(1998, 2, 3), 
+                                           DesignationId = 2
+                                       };
+
+            var uow = Mock.Create<IQTecUnitOfWork>(Behavior.Loose);
+            Mock.Arrange(() => uow.EmployeeRepository.GetById(Arg.AnyInt)).Returns(expectedEmployee);
+
+            // ACT
+            var classunderTest = new EmployeeManager(uow);
+
+            // ASSERT
+            var actualEmployee = classunderTest.GetEmployeeById(1);
+
+            Assert.AreEqual(expectedEmployee, actualEmployee);
+
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidEmployeeIdException))]
+        public void Exception_Must_Be_Thrown_If_EmployeeId_Zero()
+        {
+            var uow = Mock.Create<IQTecUnitOfWork>(Behavior.Loose);
+            // ACT
+            var classunderTest = new EmployeeManager(uow);
+
+            // ASSERT
+            var actualEmployee = classunderTest.GetEmployeeById(0);
+
+            Assert.IsNull(actualEmployee);
         }
     }
 }

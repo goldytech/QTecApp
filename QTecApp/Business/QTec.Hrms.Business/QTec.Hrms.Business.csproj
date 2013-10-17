@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IEmployeeManager.cs" />
+    <Compile Include="CustomExceptions\InvalidEmployeeIdException.cs" />
     <Compile Include="Personal\EmployeeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
