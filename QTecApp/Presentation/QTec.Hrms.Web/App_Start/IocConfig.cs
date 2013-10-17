@@ -30,7 +30,10 @@ namespace QTec.Hrms.Web.App_Start
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
             kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>();
             kernel.Bind<IEmployeeManager>().To<EmployeeManager>();
-            configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            if (configuration != null)
+            {
+                configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            }
         }
     }
 }

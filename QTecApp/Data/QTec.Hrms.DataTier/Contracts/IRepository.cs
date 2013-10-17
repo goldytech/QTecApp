@@ -1,6 +1,7 @@
 ﻿namespace QTec.Hrms.DataTier.Contracts
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The Repository interface.

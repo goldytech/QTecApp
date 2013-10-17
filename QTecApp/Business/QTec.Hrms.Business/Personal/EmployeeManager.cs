@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
+
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
@@ -36,7 +38,7 @@
         /// <returns>List of Designation</returns>
         public List<Designation> GetDesignations()
         {
-            return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
+         return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
         }
 
         /// <summary>

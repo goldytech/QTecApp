@@ -4,6 +4,7 @@
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using QTec.Hrms.DataTier.Contracts;
 
@@ -13,7 +14,7 @@
         {
             if (dbContext == null)
                 throw new ArgumentNullException("dbContext");
-            DbContext = dbContext;
+            this.DbContext = dbContext;
             DbSet = DbContext.Set<T>();
         }
 
@@ -23,7 +24,7 @@
 
         public virtual IQueryable<T> GetAll()
         {
-            return DbSet;
+            return this.DbSet;
         }
 
         public virtual T GetById(int id)
