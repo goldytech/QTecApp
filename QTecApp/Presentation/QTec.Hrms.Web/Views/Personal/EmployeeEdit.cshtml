@@ -110,30 +110,15 @@
                         </span>  
                     </div>
                 </div>
-                  <div class="row">
+                <div class="row">
                     <div class="span2">
-                        Upload photo
+                        Previous Employment:
                     </div>
-                      <div class="span10">
-                          <input id="testUpload" type="file" jqfileupload name="files[]" data-url="/files" multiple done="uploadFinished(e, data)">
-                          @* <qtecfileupload
-                            auto-upload='false'
-                            choose-file-button-text='Choose file'
-                            choose-file-button-style='btn btn-primary'
-                            upload-file-button-text='Upload file'
-                            upload-file-button-style='btn btn-primary'
-                            upload-url='http://localhost:50286/files'
-                            max-file-size-mb='5'
-                            get-additional-data='getData(files)'
-                            on-done='done(files, data)'
-                            on-progress='progress(percentDone)'
-                            on-error='error(files, type, msg)' />*@
-                      </div>
-                    <div class="span5">
-                        <progress percent="percentageDone"></progress>
+                    <div class="span10">
+                        <input name="previousempdate" ng-model="$parent.previousDate" jqdatepicker close="updateDate(date)"/>
                     </div>
                 </div>
-                <div class="row">
+               <div class="row">
                     <div class="span12">
                         <button type="submit" class="btn btn-primary" data-ng-click="saveEmployee()" ng-disabled="editForm.$invalid">{{buttonText}}</button>
                         &nbsp;&nbsp;

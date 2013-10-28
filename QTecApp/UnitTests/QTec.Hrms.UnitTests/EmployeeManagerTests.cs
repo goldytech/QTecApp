@@ -111,17 +111,31 @@ namespace QTec.Hrms.UnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidEmployeeIdException))]
         public void Exception_Must_Be_Thrown_If_EmployeeId_Zero()
         {
+            // ARRANGE
             var uow = Mock.Create<IQTecUnitOfWork>(Behavior.Loose);
+            
             // ACT
             var classunderTest = new EmployeeManager(uow);
 
-            // ASSERT
-            var actualEmployee = classunderTest.GetEmployeeById(0);
+            Employee actualEmployee = null;
+            try
+            {
+                 actualEmployee = classunderTest.GetEmployeeById(0);
+            }
+            catch (InvalidEmployeeIdException)
+            {
+                // ASSERT
+    
+                Mock.Assert(classunderTest);
+                Assert.IsNull(actualEmployee);
+                
+            }
 
-            Assert.IsNull(actualEmployee);
+            
+
+            
         }
     }
 }

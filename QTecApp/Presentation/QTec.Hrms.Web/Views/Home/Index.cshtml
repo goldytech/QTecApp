@@ -7,61 +7,68 @@
     <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="~/Content/styles.css" rel="stylesheet" />
     <link href="~/Content/animations.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
 </head>
-<body data-ng-cloak="">
+    <body data-ng-cloak="">
+        <style>
+            .ui-datepicker-calendar {
+            display: none;
+    }
+        </style>
 
-    <div class="navbar navbar-fixed-top" data-ng-controller="NavbarController">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand " href="#/">
-                    <img src="~/Content/Images/people.png" alt="logo"> {{ appTitle }}
-                </a>
-                <ul class="nav nav-pills navBarPadding">
-                    <li data-ng-class="{'active':highlight('/employees')}"><a href="#/employees">Hr Admin</a></li>
-                    <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Employee Self Service</a></li>
-                    <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div data-ng-view="" id="ng-view" class="slide-animation"></div>
-
-    <div id="footer">
-        <div class="navbar navbar-fixed-bottom">
-            <div class="navbar-inner footer">
+        <div class="navbar navbar-fixed-top" data-ng-controller="NavbarController">
+            <div class="navbar-inner">
                 <div class="container">
-                    <footer>
-                        <div class="row">
-                            <div class="span12">
-                                &copy; QTec 2012-13 The MIT License (MIT)
-                            </div>
-                        </div>
-                   </footer>
+                    <a class="brand " href="#/">
+                        <img src="~/Content/Images/people.png" alt="logo"> {{ appTitle }}
+                    </a>
+                    <ul class="nav nav-pills navBarPadding">
+                        <li data-ng-class="{'active':highlight('/employees')}"><a href="#/employees">Hr Admin</a></li>
+                        <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Employee Self Service</a></li>
+                        <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
+                    </ul>
+              
+
                 </div>
             </div>
         </div>
-    </div>
 
-    <div data-wc-overlay="" data-wc-overlay-delay="300">
-        <br /><img src="~/Content/images/spinner.gif" />&nbsp;&nbsp;Loading
-    </div>
+        <div data-ng-view="" id="ng-view" class="slide-animation"></div>
 
-    <!-- 3rd party libraries -->
-    <script src="~/Scripts/jquery-2.0.3.min.js"></script>
-    <script src="~/Scripts/jquery.ui.widget.js"></script>
-    <script src="~/Scripts/jquery.iframe-transport.js"></script>
-    <script src="~/Scripts/jquery.fileupload.js"></script>
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/angular-route.js"></script>
-    <script src="~/Scripts/angular-animate.js"></script>
-    <script src="~/Scripts/angular-ui-bootstrap.js"></script>
-    <script src="~/Scripts/tweenMax.min.js"></script>
+        <div id="footer">
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner footer">
+                    <div class="container">
+                        <footer>
+                            <div class="row">
+                                <div class="span12">
+                                    &copy; QTec 2012-13 The MIT License (MIT)
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-wc-overlay="" data-wc-overlay-delay="300">
+            <br /><img src="~/Content/images/spinner.gif" />&nbsp;&nbsp;Loading
+        </div>
+
+        <!-- 3rd party libraries -->
+   
+        <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.3.min.js"></script>
+        <script src="~/Scripts/angular-route.js"></script>
+        <script src="~/Scripts/angular-animate.js"></script>
+        <script src="~/Scripts/angular-ui-bootstrap.js"></script>
+        <script src="~/Scripts/tweenMax.min.js"></script>
 
     
 
-    <!-- Load custom scripts via RequireJS -->
-    <script src="~/Scripts/require.js" data-main="/scripts/main"></script>
+        <!-- Load custom scripts via RequireJS -->
+        <script src="~/Scripts/require.js" data-main="/scripts/main"></script>
 
-</body>
+    </body>
 </html>

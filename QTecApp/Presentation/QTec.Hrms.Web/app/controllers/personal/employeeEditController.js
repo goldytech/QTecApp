@@ -14,6 +14,7 @@ define(['app'], function (app) {
         $scope.updateStatus = false;
         $scope.errorMessage = '';
         $scope.opened = false;
+        $scope.previousDate = '';
         $scope.percentageDone = 0;
         $scope.dateOptions = {
             'year-format': "'yy'",
@@ -40,6 +41,9 @@ define(['app'], function (app) {
             }
             getDesignations();
         }
+        $scope.updateDate = function (date) {
+            alert(date);
+        };
         $scope.progress = function (percentDone) {
             $scope.percentageDone = percentDone;
         };

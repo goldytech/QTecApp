@@ -1,10 +1,7 @@
 ﻿namespace QTec.Hrms.Business.Personal
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Business.CustomExceptions;
     using QTec.Hrms.DataTier.Contracts;
@@ -16,13 +13,16 @@
     public class EmployeeManager : IEmployeeManager
     {
         #region Declarations
+        
         /// <summary>
         /// The data repositories unit of work.
         /// </summary>
         private readonly IQTecUnitOfWork qTecUnitOfWork; 
+        
         #endregion
-
+        
         #region Constructor
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeManager" /> class.
         /// </summary>
@@ -30,18 +30,19 @@
         public EmployeeManager(IQTecUnitOfWork qTecUnitOfWork)
         {
             this.qTecUnitOfWork = qTecUnitOfWork;
-        } 
-        #endregion
+        }
 
+        #endregion
+        
         /// <summary>
         /// Gets the designations.
         /// </summary>
         /// <returns>List of Designation</returns>
         public List<Designation> GetDesignations()
         {
-         return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
+            return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
         }
-
+        
         /// <summary>
         /// Determines whether  email is unique
         /// </summary>
@@ -51,7 +52,7 @@
         {
             return this.qTecUnitOfWork.EmployeeRepository.IsEmailDuplicate(email);
         }
-       
+        
         /// <summary>
         /// Gets the employee by id.
         /// </summary>
@@ -63,9 +64,10 @@
             {
                 throw new InvalidEmployeeIdException("No such employee exists");                
             }
+        
             return this.qTecUnitOfWork.EmployeeRepository.GetById(id);
         }
-
+        
         /// <summary>
         /// Adds the employee.
         /// </summary>
@@ -75,7 +77,7 @@
             this.qTecUnitOfWork.EmployeeRepository.Add(employee);
             this.qTecUnitOfWork.Commit();
         }
-
+        
         /// <summary>
         /// Updates the employee.
         /// </summary>
@@ -85,17 +87,14 @@
             this.qTecUnitOfWork.EmployeeRepository.Update(employee);
             this.qTecUnitOfWork.Commit();
         }
-
+        
         /// <summary>
         /// Gets the employees.
         /// </summary>
         /// <returns>IQueryable of Employees</returns>
-        
         public IQueryable<Employee> GetEmployees()
         {
             return this.qTecUnitOfWork.EmployeeRepository.GetEmployeesWithDesignation();
         }
-
-        
     }
 }
