@@ -1,6 +1,6 @@
 ﻿'use strict';
 define(['app'], function(app) {
-    app.directive('jqdatepicker', [], function() {
+    app.directive('jqdatepicker', function() {
         return {
             // Enforce the angularJS default of restricting the directive to
             // attributes only
@@ -14,9 +14,7 @@ define(['app'], function(app) {
             },
             link: function (scope, element, attrs, ngModel) {
                 if (!ngModel) return;
-                alert(ngModel);
                 var optionsObj = {};
-
                 optionsObj.dateFormat = 'MM yy';
                 optionsObj.changeMonth = true;
                 optionsObj.changeYear = true;
@@ -26,14 +24,18 @@ define(['app'], function(app) {
                         // Call the internal AngularJS helper to
                         // update the two way binding
                         ngModel.$setViewValue(dateTxt);
+                        element.datepicker('setDate', ngModel.$viewValue);
                     });
                 };
 
                 optionsObj.onClose = function (dateTxt, picker) {
-                    updateModel(dateTxt);
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    var selDate = new Date(year, month, 1);
+                    updateModel(selDate);
                     if (scope.close) {
                         scope.$apply(function () {
-                            scope.close({ date: dateTxt });
+                            scope.close({ date: selDate });
                         });
                     }
                 };
