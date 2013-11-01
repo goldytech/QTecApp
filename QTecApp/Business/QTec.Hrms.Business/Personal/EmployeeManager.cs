@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+
+    using QTec.Hrms.Business.Aspects;
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Business.CustomExceptions;
     using QTec.Hrms.DataTier.Contracts;
@@ -58,14 +60,19 @@
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns>Employee</returns>
+        [ExceptionAspect]
         public Employee GetEmployeeById(int id)
         {
             if (id == 0 || id < 0)
             {
-                throw new InvalidEmployeeIdException("No such employee exists");                
+                throw new InvalidEmployeeIdException("No such employee exists");
             }
-        
-            return this.qTecUnitOfWork.EmployeeRepository.GetById(id);
+
+            //var zero = 0;
+            //var result = 1 / zero;
+            Employee emp;
+            emp= this.qTecUnitOfWork.EmployeeRepository.GetById(id);
+            return emp;
         }
         
         /// <summary>

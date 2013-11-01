@@ -38,9 +38,22 @@ namespace QTec.Hrms.Web.WebApi
         }
  
         [HttpGet]
-        public Employee EmployeeById(int id)
+        public HttpResponseMessage EmployeeById(int id)
         {
-            return this.employeeManager.GetEmployeeById(id);
+            try
+            {
+                var emp = this.employeeManager.GetEmployeeById(id);
+                if (emp !=null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, emp);    
+                }
+                return this.Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            catch (Exception exception)
+            {
+                return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exception);
+                
+            }
         }
 
         /// <summary>

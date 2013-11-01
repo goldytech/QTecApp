@@ -30,6 +30,7 @@
         public virtual T GetById(int id)
         {
             //return DbSet.FirstOrDefault(PredicateBuilder.GetByIdPredicate<T>(id));
+
             return DbSet.Find(id);
         }
 
