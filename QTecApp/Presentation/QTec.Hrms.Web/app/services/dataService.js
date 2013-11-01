@@ -56,9 +56,23 @@ define(['app'], function (app) {
         employeeFactory.getEmployee = function (id) {
             //then does not unwrap data so must go through .data property
             //success unwraps data automatically (no need to call .data property)
-            return $http.get(serviceBase + 'employeeById/' + id).then(function (results) {
-               return results.data;
-            });
+            //return $http.get(serviceBase + 'employeeById/' + id).then(function (results) {
+            //   return results.data;
+            //});
+            
+
+           return $http({ method: 'GET', url: serviceBase + 'employeeById/' + id }).
+    success(function (data, status, headers, config) {
+        // this callback will be called asynchronously
+        // when the response is available
+        alert(headers);
+        return data;
+    }).
+    error(function (data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        return data;
+    });
         };
 
    

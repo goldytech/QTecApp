@@ -1,2 +1,0 @@
-2013-11-01 12:55:09.0013|ERROR|QTec.Hrms.Business.Aspects.ExceptionAspect|Error was thrown in method GetEmployeeById . The error message is Cannot open database "QTecDb" requested by the login. The login failed.
-Login failed for user 'project'.

@@ -24,10 +24,10 @@
         /// <param name="args">Advice arguments.</param>
         public override void OnException(MethodExecutionArgs args)
         {
-            var logMessage = string.Format("Error was thrown in method {0} . The error message is {1}", args.Method.Name, args.Exception.InnerException.Message);
+           var logMessage = string.Format("Error was thrown in method {0} . The error message is {1} Stack Trace is {2}", args.Method.Name, args.Exception.Message,args.Exception.StackTrace);
             logger.Error(logMessage);
-            args.ReturnValue = null;
-            args.FlowBehavior=FlowBehavior.Return;
+            //args.ReturnValue = null;
+            //args.FlowBehavior=FlowBehavior.Return;
             base.OnException(args);
         }
     }

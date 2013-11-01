@@ -68,8 +68,8 @@
                 throw new InvalidEmployeeIdException("No such employee exists");
             }
 
-            //var zero = 0;
-            //var result = 1 / zero;
+            var zero = 0;
+            var result = 1 / zero;
             Employee emp;
             emp= this.qTecUnitOfWork.EmployeeRepository.GetById(id);
             return emp;

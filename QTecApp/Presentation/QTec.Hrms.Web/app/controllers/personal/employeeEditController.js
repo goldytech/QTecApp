@@ -31,6 +31,15 @@ define(['app'], function (app) {
         function init() {
             if (employeeID > 0) {
                 dataService.getEmployee(employeeID).then(function (employee) {
+                    if (!angular.isObject(employee)) {
+                        alert("Invalid Employee");
+                        $location.path('/employees');
+                        return 0;
+                    }
+                    if (angular.isString(employee.data.exceptionMessage)) {
+                        alert("Error occurred");
+                        return 0;
+                    }
                     $scope.employee = employee;
                 }, processError);
             } else {
