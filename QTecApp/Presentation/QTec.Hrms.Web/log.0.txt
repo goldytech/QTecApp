@@ -1,0 +1,1 @@
+2013-11-11 14:34:34.3923|ERROR|QTec.Hrms.Business.Aspects.ExceptionAspect|Error was thrown in method GetEmployeeById . The error message is Attempted to divide by zero. Stack Trace is    at QTec.Hrms.Business.Personal.EmployeeManager.GetEmployeeById(Int32 id) in c:\Afzal\Projects\GitHubRepos\QTecApp\QTecApp\Business\QTec.Hrms.Business\Personal\EmployeeManager.cs:line 72

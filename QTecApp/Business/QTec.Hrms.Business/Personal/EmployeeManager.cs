@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
     using QTec.Hrms.Business.Aspects;
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Business.CustomExceptions;
@@ -29,8 +28,13 @@
         /// Initializes a new instance of the <see cref="EmployeeManager" /> class.
         /// </summary>
         /// <param name="qTecUnitOfWork">The QTec unit of work.</param>
+        [DefensiveProgrammingAspect]
         public EmployeeManager(IQTecUnitOfWork qTecUnitOfWork)
         {
+            //if (qTecUnitOfWork == null)
+            //{
+            //    throw new ArgumentNullException("qTecUnitOfWork");
+            //}
             this.qTecUnitOfWork = qTecUnitOfWork;
         }
 
@@ -68,10 +72,9 @@
                 throw new InvalidEmployeeIdException("No such employee exists");
             }
 
-            var zero = 0;
-            var result = 1 / zero;
-            Employee emp;
-            emp= this.qTecUnitOfWork.EmployeeRepository.GetById(id);
+            //var zero = 0;
+            //var result = 1 / zero;
+            Employee emp = this.qTecUnitOfWork.EmployeeRepository.GetById(id);
             return emp;
         }
         
@@ -99,6 +102,7 @@
         /// Gets the employees.
         /// </summary>
         /// <returns>IQueryable of Employees</returns>
+        [ExceptionAspect]
         public IQueryable<Employee> GetEmployees()
         {
             return this.qTecUnitOfWork.EmployeeRepository.GetEmployeesWithDesignation();

@@ -7,10 +7,10 @@
     using PostSharp.Aspects;
 
     /// <summary>
-    /// 
+    ///  Represents Exception Aspect
     /// </summary>
     [Serializable]
-    public class ExceptionAspect : OnExceptionAspect
+    public class ExceptionAspectAttribute : OnExceptionAspect
     {
         /// <summary>
         /// The logger.

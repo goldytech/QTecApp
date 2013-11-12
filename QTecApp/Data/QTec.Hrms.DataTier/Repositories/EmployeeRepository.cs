@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QTec.Hrms.DataTier.Repositories
+﻿namespace QTec.Hrms.DataTier.Repositories
 {
     using System.Data.Entity;
+    using System.Linq;
 
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
@@ -16,8 +11,11 @@ namespace QTec.Hrms.DataTier.Repositories
     /// </summary>
     public class EmployeeRepository : EFRepository<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(DbContext dbContext)
-            : base(dbContext)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeeRepository" /> class.
+        /// </summary>
+        /// <param name="dbContext">The db context.</param>
+        public EmployeeRepository(DbContext dbContext) : base(dbContext)
         {
         }
 
@@ -37,6 +35,8 @@ namespace QTec.Hrms.DataTier.Repositories
         /// <returns>IQueryable of Employees</returns>
         public IQueryable<Employee> GetEmployeesWithDesignation()
         {
+            //var zero = 0;
+            //var result = 1 / zero;
             return this.DbContext.Set<Employee>().Include("Designation");
         }
     }

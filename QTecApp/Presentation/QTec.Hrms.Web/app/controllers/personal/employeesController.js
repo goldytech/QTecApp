@@ -2,8 +2,8 @@
 
 define(['app'], function (app) {
 
-    app.controller('EmployeesController', ['$scope', '$location', '$filter', 'dataService', 'modalService',
-        function ($scope, $location, $filter, dataService, modalService) {
+    app.controller('EmployeesController', ['$scope', '$location', '$filter', 'dataService', 'modalService','config',
+        function ($scope, $location, $filter, dataService, modalService,config) {
 
         $scope.employees = [];
         $scope.filteredEmployees = [];
@@ -13,7 +13,7 @@ define(['app'], function (app) {
 
         //paging
         $scope.totalRecords = 0;
-        $scope.pageSize = 10;
+        $scope.pageSize = config.pageCount;
         $scope.currentPage = 1;
 
         init();

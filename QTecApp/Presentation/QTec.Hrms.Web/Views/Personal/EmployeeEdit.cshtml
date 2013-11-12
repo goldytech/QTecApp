@@ -22,7 +22,7 @@
                         First Name:
                     </div>
                     <div class="span10">
-                        <input type="text" name="firstName" data-ng-model="employee.firstName" required />
+                        <input type="text" name="firstName" data-ng-model="firstName" required />
                         <span class="errorMessage" ng-show="editForm.firstName.$dirty && editForm.firstName.$error.required">
                             First name is required
                         </span>
@@ -33,7 +33,7 @@
                         Last Name:
                     </div>
                     <div class="span10">
-                        <input type="text" data-ng-model="employee.lastName" required />
+                        <input type="text" data-ng-model="lastName" required />
                         <span class="errorMessage" ng-show="editForm.lastName.$dirty && editForm.lastName.$invalid">
                             Last name is required
                         </span>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="span10">
                         <input type="text" name="email"
-                            data-ng-model="employee.email" 
+                            data-ng-model="companyemail" 
                             @*data-qtec-unique=""*@
                             required /> 
                         @*<span class="errorMessage" data-ng-show="editForm.email.$error.unique">

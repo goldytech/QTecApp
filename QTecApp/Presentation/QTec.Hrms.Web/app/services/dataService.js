@@ -65,7 +65,7 @@ define(['app'], function (app) {
     success(function (data, status, headers, config) {
         // this callback will be called asynchronously
         // when the response is available
-        alert(headers);
+       // alert(headers);
         return data;
     }).
     error(function (data, status, headers, config) {

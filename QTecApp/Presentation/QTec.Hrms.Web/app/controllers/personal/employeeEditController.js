@@ -11,6 +11,9 @@ define(['app'], function (app) {
         $scope.employee;
         $scope.title = (employeeID > 0) ? 'Edit' : 'Add';
         $scope.buttonText = (employeeID > 0) ? 'Update' : 'Add';
+        $scope.firstName;
+        $scope.lastName;
+        $scope.companyemail;
         $scope.updateStatus = false;
         $scope.errorMessage = '';
         $scope.opened = false;
@@ -37,7 +40,7 @@ define(['app'], function (app) {
                         return 0;
                     }
                     if (angular.isString(employee.data.exceptionMessage)) {
-                        alert("Error occurred");
+                        $scope.errorMessage = 'Error occurred and it has been logged';
                         return 0;
                     }
                     $scope.employee = employee;
@@ -83,7 +86,7 @@ define(['app'], function (app) {
 
         $scope.saveEmployee = function () {
             if ($scope.editForm.$valid) {
-                if (employeeID == 0) //comparing the query string of employeeID
+                if (employeeID === 0) //comparing the query string of employeeID
                 {
                     dataService.insertEmployee($scope.employee).then(processSuccess, processError);
                 }
@@ -127,6 +130,18 @@ define(['app'], function (app) {
             }, 3000);
         }
 
-    }]);
+            var getEmail = function() {
+                if (angular.isString($scope.firstName) && angular.isString($scope.lastName)) {
+                    $scope.companyemail = $scope.firstName + '.' + $scope.lastName + "@quipment.in";
+                    
+                } else {
+                    $scope.companyemail = null;
+                }
+            };
+
+            $scope.$watch('firstName', getEmail, true);
+            $scope.$watch('lastName', getEmail, true);
+
+        }]);
 
 });

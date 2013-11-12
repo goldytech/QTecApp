@@ -157,13 +157,17 @@
     <Content Include="app\controllers\personal\employeeEditController.js" />
     <Content Include="app\controllers\personal\employeesController.js" />
     <Content Include="app\controllers\navBarController.js" />
+    <Content Include="app\controllers\security\menuController.js" />
     <Content Include="app\directives\wcFocus.js" />
+    <Content Include="app\directives\wchrmsMenu.js" />
     <Content Include="app\directives\wcjqDatePicker.js" />
     <Content Include="app\directives\wcOverlay.js" />
     <Content Include="app\directives\wcUnique.js" />
     <Content Include="app\filters\nameCityStateFilter.js" />
     <Content Include="app\partials\dialog.html" />
+    <Content Include="app\partials\menu.html" />
     <Content Include="app\partials\modal.html" />
+    <Content Include="app\services\configService.js" />
     <Content Include="app\services\dataService.js" />
     <Content Include="app\services\dialogService.js" />
     <Content Include="app\services\modalService.js" />

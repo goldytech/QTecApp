@@ -6,8 +6,8 @@ define(['app'], function (app) {
         var appTitle = 'Employee Management';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
-            return $location.path().substr(0, path.length) == path;
-        }
+            return $location.path().substr(0, path.length) === path;
+        };
     }]);
 
 });

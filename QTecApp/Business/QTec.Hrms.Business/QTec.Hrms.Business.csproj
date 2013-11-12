@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aspects\ExceptionAspect.cs" />
+    <Compile Include="Aspects\DefensiveProgrammingAspectAttribute.cs" />
+    <Compile Include="Aspects\ExceptionAspectAttribute.cs" />
     <Compile Include="Contracts\IEmployeeManager.cs" />
     <Compile Include="CustomExceptions\InvalidEmployeeIdException.cs" />
     <Compile Include="Personal\EmployeeManager.cs" />
