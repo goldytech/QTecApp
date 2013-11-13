@@ -3,6 +3,7 @@
     using System.Linq;
 
     using QTec.Hrms.Models;
+    using QTec.Hrms.Models.Dto;
 
     /// <summary>
     /// The EmployeeRepository interface.
@@ -17,5 +18,16 @@
         bool IsEmailDuplicate(string emailId);
 
         IQueryable<Employee> GetEmployeesWithDesignation();
+
+        /// <summary>
+        /// The get employee personal info.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EmployeePersonalInfo"/>.
+        /// </returns>
+        EmployeePersonalInfo GetEmployeePersonalInfo(int id);
     }
 }

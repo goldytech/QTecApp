@@ -7,6 +7,7 @@
     using QTec.Hrms.Business.CustomExceptions;
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
+    using QTec.Hrms.Models.Dto;
 
     /// <summary>
     /// The employee manager.
@@ -29,6 +30,7 @@
         /// </summary>
         /// <param name="qTecUnitOfWork">The QTec unit of work.</param>
         [DefensiveProgrammingAspect]
+        [ExceptionAspect]
         public EmployeeManager(IQTecUnitOfWork qTecUnitOfWork)
         {
             //if (qTecUnitOfWork == null)
@@ -106,6 +108,21 @@
         public IQueryable<Employee> GetEmployees()
         {
             return this.qTecUnitOfWork.EmployeeRepository.GetEmployeesWithDesignation();
+        }
+
+        /// <summary>
+        /// The get employee personal info.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EmployeePersonalInfo"/>.
+        /// </returns>
+        [ExceptionAspect]
+        public EmployeePersonalInfo GetEmployeePersonalInfo(int id)
+        {
+            return this.qTecUnitOfWork.EmployeeRepository.GetEmployeePersonalInfo(id);
         }
     }
 }

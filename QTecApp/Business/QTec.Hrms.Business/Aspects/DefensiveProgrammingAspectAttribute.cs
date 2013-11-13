@@ -39,5 +39,6 @@ namespace QTec.Hrms.Business.Aspects
             }
             base.OnEntry(args);
         }
+        
     }
 }

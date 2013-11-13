@@ -58,6 +58,14 @@
     <Compile Include="Migrations\201309301230225_InitialCreate.Designer.cs">
       <DependentUpon>201309301230225_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311130746098_EmployeesLanguages.cs" />
+    <Compile Include="Migrations\201311130746098_EmployeesLanguages.Designer.cs">
+      <DependentUpon>201311130746098_EmployeesLanguages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311130755401_Releationship_removed.cs" />
+    <Compile Include="Migrations\201311130755401_Releationship_removed.Designer.cs">
+      <DependentUpon>201311130755401_Releationship_removed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTecDataContext.cs" />
@@ -71,6 +79,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201309301230225_InitialCreate.resx">
       <DependentUpon>201309301230225_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311130746098_EmployeesLanguages.resx">
+      <DependentUpon>201311130746098_EmployeesLanguages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311130755401_Releationship_removed.resx">
+      <DependentUpon>201311130755401_Releationship_removed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

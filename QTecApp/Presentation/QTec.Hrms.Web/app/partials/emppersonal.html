@@ -1,0 +1,119 @@
+﻿ <form name="personalEditForm" novalidate>
+            <div>
+                
+                <div class="row">
+                    <div class="span2">
+                        Employee Id:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="Id" data-ng-model="personal.employeeId" required data-qtec-focus="true" />
+                        <span class="errorMessage" data-ng-show="personalEditForm.Id.$dirty && personalEditForm.Id.$error.required">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="span2">
+                        First Name:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="firstName" data-ng-model="personal.firstName" required />
+                        <span class="errorMessage" ng-show="personalEditForm.firstName.$dirty && personalEditForm.firstName.$error.required">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Last Name:
+                    </div>
+                    <div class="span10">
+                        <input type="text" data-ng-model="personal.lastName" required />
+                        <span class="errorMessage" ng-show="personalEditForm.lastName.$dirty && personalEditForm.lastName.$invalid">
+                            Last name is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Gender:
+                    </div>
+                    <div class="span10">
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Male" 
+                                data-ng-checked="personal.gender == 'male'" 
+                                data-ng-model="personal.gender" />
+                            Male
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Female" 
+                                data-ng-checked="personal.gender == 'female'" 
+                                data-ng-model="personal.gender" />
+                            Female
+                            <br />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Email:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="email"
+                            data-ng-model="personal.companyemail" 
+                            @*data-qtec-unique=""*@
+                            required /> 
+                        @*<span class="errorMessage" data-ng-show="personalEditForm.email.$error.unique">
+                            Email already in use
+                        </span>*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Salary:
+                    </div>
+                    <div class="span10">
+                        <input type="text" name="salary" data-ng-model="personal.salary" required />
+                        <span class="errorMessage" ng-show="personalEditForm.salary.$dirty && personalEditForm.salary.$error.required">
+                            Salary is required
+                        </span>                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        Designation:
+                    </div>
+                    <div class="span10">
+                        <select name="designation" required
+                            data-ng-model="personal.designationId" 
+                            data-ng-options="designation.id as designation.name for designation in designations">
+                            <option value=""></option>
+                        </select>
+                        <span class="errorMessage" ng-show="personalEditForm.designation.$dirty && personalEditForm.state.$error.required">
+                            Designation is required
+                        </span>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        BirthDate:
+                    </div>
+                    <div class="span10">
+                        <input type="date" name="birthdate" data-ng-model="personal.dateOfBirth" required datepicker-popup="dd-MMMM-yyyy" open="opened" datepicker-options="dateOptions" />
+                        <span class="errorMessage" ng-show="personalEditForm.birthdate.$dirty && personalEditForm.birthdate.$error.required">
+                            Birth date is required
+                        </span>  
+                    </div>
+                </div>
+               
+               <div class="row">
+                    <div class="span12">
+                        <button type="submit" class="btn btn-primary" data-ng-click="saveEmployeePersonalDetails()" ng-disabled="personalEditForm.$invalid">Save Personal Info</button>
+                      
+                    </div>
+                </div>
+                
+                
+              
+            </div>
+        </form>

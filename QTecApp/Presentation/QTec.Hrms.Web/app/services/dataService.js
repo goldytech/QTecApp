@@ -63,6 +63,7 @@ define(['app'], function (app) {
 
            return $http({ method: 'GET', url: serviceBase + 'employeeById/' + id }).
     success(function (data, status, headers, config) {
+        alert(status);
         // this callback will be called asynchronously
         // when the response is available
        // alert(headers);

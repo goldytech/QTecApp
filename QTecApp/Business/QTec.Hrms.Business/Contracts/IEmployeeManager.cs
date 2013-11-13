@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
 
     using QTec.Hrms.Models;
+    using QTec.Hrms.Models.Dto;
 
     public interface IEmployeeManager
     {
@@ -45,5 +46,16 @@
         /// </summary>
         /// <returns>List of Designation</returns>
         List<Designation> GetDesignations();
+
+        /// <summary>
+        /// The get employee personal info.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EmployeePersonalInfo"/>.
+        /// </returns>
+        EmployeePersonalInfo GetEmployeePersonalInfo(int id);
     }
 }

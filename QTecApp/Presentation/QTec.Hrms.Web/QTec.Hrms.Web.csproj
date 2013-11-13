@@ -145,6 +145,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApi\EmpPersonalInfoController.cs" />
+    <Compile Include="WebApi\LanguageController.cs" />
     <Compile Include="WebApi\PersonalController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,8 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\aboutController.js" />
     <Content Include="app\controllers\personal\employeeEditController.js" />
+    <Content Include="app\controllers\personal\employeeLanguagesController.js" />
+    <Content Include="app\controllers\personal\employeePersonalController.js" />
     <Content Include="app\controllers\personal\employeesController.js" />
     <Content Include="app\controllers\navBarController.js" />
     <Content Include="app\controllers\security\menuController.js" />
@@ -165,11 +169,14 @@
     <Content Include="app\directives\wcUnique.js" />
     <Content Include="app\filters\nameCityStateFilter.js" />
     <Content Include="app\partials\dialog.html" />
+    <Content Include="app\partials\emplanguages.html" />
+    <Content Include="app\partials\emppersonal.html" />
     <Content Include="app\partials\menu.html" />
     <Content Include="app\partials\modal.html" />
     <Content Include="app\services\configService.js" />
     <Content Include="app\services\dataService.js" />
     <Content Include="app\services\dialogService.js" />
+    <Content Include="app\services\employeepersonalService.js" />
     <Content Include="app\services\modalService.js" />
     <Content Include="Content\animations.css" />
     <Content Include="Content\bootstrap-responsive.css" />

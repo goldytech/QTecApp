@@ -5,6 +5,7 @@
 
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
+    using QTec.Hrms.Models.Dto;
 
     /// <summary>
     /// Employee Repository
@@ -38,6 +39,34 @@
             //var zero = 0;
             //var result = 1 / zero;
             return this.DbContext.Set<Employee>().Include("Designation");
+        }
+
+        /// <summary>
+        /// The get employee personal info.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EmployeePersonalInfo"/>.
+        /// </returns>
+        public EmployeePersonalInfo GetEmployeePersonalInfo(int id)
+        {
+            return this.DbContext.Set<Employee>()
+                .Select(
+                    emp =>
+                    new EmployeePersonalInfo
+                        {
+                            EmployeeId = emp.EmployeeId,
+                            FirstName = emp.FirstName,
+                            LastName = emp.LastName,
+                            Email = emp.Email,
+                            DesignationId = emp.DesignationId,
+                            DateOfBirth = emp.DateOfBirth,
+                            Gender = emp.Gender,
+                            Salary = emp.Salary
+                        })
+                .FirstOrDefault(e => e.EmployeeId.Equals(id));
         }
     }
 }

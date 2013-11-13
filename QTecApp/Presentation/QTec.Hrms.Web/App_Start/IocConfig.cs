@@ -10,6 +10,7 @@ namespace QTec.Hrms.Web.App_Start
     using Ninject;
 
     using QTec.Hrms.Business.Contracts;
+    using QTec.Hrms.Business.Masters;
     using QTec.Hrms.Business.Personal;
     using QTec.Hrms.DataTier;
     using QTec.Hrms.DataTier.Contracts;
@@ -30,6 +31,7 @@ namespace QTec.Hrms.Web.App_Start
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
             kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>();
             kernel.Bind<IEmployeeManager>().To<EmployeeManager>();
+            kernel.Bind<ILanguageManager>().To<LanguageManager>();
             if (configuration != null)
             {
                 configuration.DependencyResolver = new NinjectDependencyResolver(kernel);

@@ -1,19 +1,15 @@
-﻿namespace QTec.Hrms.Models
+﻿namespace QTec.Hrms.Models.Dto
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The employee.
+    /// The employee personal info.
     /// </summary>
-    public class Employee
+    public class EmployeePersonalInfo
     {
         /// <summary>
         /// Gets or sets the employee id.
         /// </summary>
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EmployeeId
         {
             get;
@@ -23,8 +19,7 @@
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
-        [Required, MaxLength(50)]
-        public string FirstName
+       public string FirstName
         {
             get;
             set;
@@ -33,8 +28,7 @@
         /// <summary>
         /// Gets or sets the last name.
         /// </summary>
-        [Required, MaxLength(50)]
-        public string LastName
+       public string LastName
         {
             get;
             set;
@@ -49,16 +43,7 @@
             set;
         }
 
-        /// <summary>
-        /// Gets or sets the designation.
-        /// </summary>
-        public virtual Designation Designation
-        {
-            get;
-            set;
-        }// Navigational Property
-
-        /// <summary>
+       /// <summary>
         /// Gets or sets the date of birth.
         /// </summary>
         public DateTime DateOfBirth
@@ -79,8 +64,7 @@
         /// <summary>
         /// Gets or sets the email.
         /// </summary>
-        [Required, MaxLength(50)]
-        public string Email
+       public string Email
         {
             get;
             set;
@@ -89,20 +73,11 @@
         /// <summary>
         /// Gets or sets the gender.
         /// </summary>
-        [MaxLength(10)]
-        public string Gender
+       public string Gender
         {
             get;
             set;
         }
 
-        /// <summary>
-        /// Gets or sets the employee languages.
-        /// </summary>
-        public virtual ICollection<EmployeeLanguages> Languages
-        {
-            get;
-            set;
-        }
     }
 }

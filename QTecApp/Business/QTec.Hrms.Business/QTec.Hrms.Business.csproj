@@ -53,6 +53,8 @@
     <Compile Include="Aspects\DefensiveProgrammingAspectAttribute.cs" />
     <Compile Include="Aspects\ExceptionAspectAttribute.cs" />
     <Compile Include="Contracts\IEmployeeManager.cs" />
+    <Compile Include="Contracts\ILanguageManager.cs" />
+    <Compile Include="Masters\LanguageManager.cs" />
     <Compile Include="CustomExceptions\InvalidEmployeeIdException.cs" />
     <Compile Include="Personal\EmployeeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -69,6 +69,16 @@ namespace QTec.Hrms.DataTier
         }
 
         /// <summary>
+        /// Gets the language repository.
+        /// </summary>
+        public IRepository<Language> LanguageRepository
+        {
+            get
+            {
+                return this.GetStandardRepo<Language>();
+            }
+        }
+        /// <summary>
         /// Commits the changes in database.
         /// </summary>
         public void Commit()
@@ -76,22 +86,44 @@ namespace QTec.Hrms.DataTier
             this.DbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets or sets the repository provider.
+        /// </summary>
         protected IRepositoryProvider RepositoryProvider
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The get standard repo.
+        /// </summary>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="IRepository"/>.
+        /// </returns>
         private IRepository<T> GetStandardRepo<T>() where T : class
         {
-            return RepositoryProvider.GetRepositoryForEntityType<T>();
+            return this.RepositoryProvider.GetRepositoryForEntityType<T>();
         }
 
+        /// <summary>
+        /// The get repo.
+        /// </summary>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="T"/>.
+        /// </returns>
         private T GetRepo<T>() where T : class
         {
-            return RepositoryProvider.GetRepository<T>();
+            return this.RepositoryProvider.GetRepository<T>();
         }
 
+        /// <summary>
+        /// Gets or sets the db context.
+        /// </summary>
         private QTecDataContext DbContext
         {
             get;
