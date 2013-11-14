@@ -12,16 +12,20 @@ namespace QTec.Hrms.Web
     {
         public static void Register(HttpConfiguration config)
         {
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional });
 
-            config.Routes.MapHttpRoute(
-                name: "HrmsRoute",
-                routeTemplate: "apiv2/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional });
+            // if attribute route is not getting used then you can use convention route as below to get employee languages
 
+            //config.Routes.MapHttpRoute(
+            //    name: "EmployeeLanguagesRoute",
+            //    routeTemplate: "api/{controller}/{id}/Languages",
+            //    defaults: new { id = 0, controller = "Employees", action = "GetLanguages" });
+           
+            
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
