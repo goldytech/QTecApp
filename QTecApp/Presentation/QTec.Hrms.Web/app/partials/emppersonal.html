@@ -1,4 +1,4 @@
-﻿ <form name="personalEditForm" novalidate>
+﻿<form name="personalEditForm" novalidate data-ng-controller="EmployeePersonalController">
             <div>
                 
                 <div class="row">
@@ -61,11 +61,8 @@
                     <div class="span10">
                         <input type="text" name="email"
                             data-ng-model="personal.companyemail" 
-                            @*data-qtec-unique=""*@
                             required /> 
-                        @*<span class="errorMessage" data-ng-show="personalEditForm.email.$error.unique">
-                            Email already in use
-                        </span>*@
+                        
                     </div>
                 </div>
                 <div class="row">

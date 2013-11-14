@@ -1,7 +1,6 @@
 ﻿namespace QTec.Hrms.Web.WebApi
 {
-    using System.Net;
-    using System.Net.Http;
+   
     using System.Web.Http;
 
     using QTec.Hrms.Business.Contracts;
@@ -9,8 +8,12 @@
     /// <summary>
     /// The language controller.
     /// </summary>
+    [RoutePrefix("api/languages")]
     public class LanguageController : ApiController
     {
+        /// <summary>
+        /// The language manager.
+        /// </summary>
         private readonly ILanguageManager languageManager;
 
         /// <summary>
@@ -28,13 +31,14 @@
         /// The get.
         /// </summary>
         /// <returns>
-        /// The <see cref="HttpResponseMessage"/>.
+        /// The <see cref="IHttpActionResult"/>.
         /// </returns>
-        public HttpResponseMessage Get()
+        [Route("")]
+        public IHttpActionResult Get()
         {
             var languages = this.languageManager.GetLanguages();
 
-            return Request.CreateResponse(HttpStatusCode.OK, languages); //TODO add the error handlers
+            return this.Ok(languages);
         }
     }
 }

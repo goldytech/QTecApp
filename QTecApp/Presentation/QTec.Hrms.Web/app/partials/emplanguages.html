@@ -1,12 +1,12 @@
-﻿<form name="empLangsEditForm" novalidate>
+﻿<form name="empLangsEditForm" novalidate data-ng-controller="EmployeeLanguagesController">
     <div class="row">
         <div class="span2">
             Language :
         </div>
         <div class="span10">
             <select name="language" required
-                data-ng-model="languagesKnown.languageId"
-                data-ng-options="language.id as language.name for language in languages" tabindex="1">
+                data-ng-model="language.languageId"
+                data-ng-options="selectedlanguage.languageId as selectedlanguage.name for selectedlanguage in languagesMaster">
                 <option selected="selected" value="">Select Language</option>
             </select>
             <span class="errorMessage" data-ng-show="empLangsEditForm.language.$dirty && editForm.language.$error.required">Language is required
@@ -19,7 +19,7 @@
         </div>
         <div class="span10">
             <select name="fluency" required tabindex="2"
-                data-ng-model="languagesKnown.fluency">
+                data-ng-model="language.fluency">
                 <option selected="selected" value="">Select Fluency</option>
                 <option value="0">Beginner</option>
                 <option value="1">Intermediate</option>
@@ -32,7 +32,7 @@
     <br />
     <br />
 
-    <button id="addLang" data-ng-click="addLanguage()" data-ng-disable="true">Add New Language in Grid</button><br />
+    <button id="addLang" data-ng-click="addLanguage()">Add New Language in Grid</button><br />
     <br />
 
     <div class="row gridContainer customersTable show-hide-animation" data-ng-show="true">
@@ -47,17 +47,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="languagesKnown in languagesKnowns" class="repeat-animation">
+                    <tr data-ng-repeat="employeeLanguage in employeeLanguages" class="repeat-animation">
                         <td>
-                            <span>{{languages[languagesKnown.languageId - 1].name}}</span>
+                            <span>{{employeeLanguage.language.name}}</span>
                         </td>
                         <td>
-                            <select name="fluency" required
-                                data-ng-model="languagesKnown.fluency" data-ng-disabled="true">
-                                <option value="0">Beginner</option>
-                                <option value="1">Intermediate</option>
-                                <option value="2">Expert</option>
-                            </select>
+                            <span>{{employeeLanguage.fluency}}</span>
                         </td>
                         <td>
                             <button class="btn btn-primary" data-ng-click="selectLanguage($index)">Edit</button>

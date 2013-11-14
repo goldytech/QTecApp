@@ -29,9 +29,9 @@ define([], function () {
                 templateUrl: '/Personal/About',
                 controller: 'AboutController'
             });
-            $routeProvider.when('/employeeedit/:employeeID', {
-                templateUrl: '/Personal/EmployeeEdit',
-                controller: 'EmployeeEditController'
+            $routeProvider.when('/employeeedit/:employeeId', {
+                templateUrl: '/Personal/EmployeeEditNew',
+                controller: 'EmployeeEditNewController'
             });
            $routeProvider.otherwise({
                 redirectTo: '/'

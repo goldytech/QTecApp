@@ -1,10 +1,10 @@
 ﻿'use strict';
 define(['app'], function(app) {
-    app.controller('EmployeePersonalController', ['$scope', '$rootScope', 'dataService', 'EmployeePersonalDataService', '$routeParams', function ($scope, $rootScope, dataService, employeePersonalDataservice,$routeParams) {
+    app.controller('EmployeePersonalController', ['$scope', '$rootScope', 'dataService', 'EmployeeDataService', '$routeParams', function ($scope, $rootScope, dataService, employeePersonalDataservice,$routeParams) {
 
-        $scope.personal = {};
+        $scope.personal={};
         $scope.designations = [];
-        $scope.saveEmployeePersonalDetails = function() {
+        $scope.saveEmployeePersonalDetails = function () {
             $rootScope.$broadcast("updatepersonalinfo", $scope.personal);
         };
 
@@ -13,6 +13,7 @@ define(['app'], function(app) {
         function init() {
             getDesignations();
 
+            //check for query string if found then load the corresponding data
             if (!angular.isUndefined($routeParams.employeeId)) {
                 getEmployeePersonalInfo($routeParams.employeeId);
             }
@@ -24,13 +25,14 @@ define(['app'], function(app) {
                 if (!angular.isObject(empPersonalInfo)) {
                     alert("Invalid Employee");
                     $location.path('/employees'); // TODO redirect to 404 page
-                    return 0;
+                    return -1;
                 }
                 if (angular.isString(empPersonalInfo.data.exceptionMessage)) {
                     alert(empPersonalInfo.data.exceptionMessage); // TODO redirect to ERROR page
-                    return 0;
+                    return -1;
                 }
-                $scope.employee = empPersonalInfo;
+                $scope.personal = empPersonalInfo.data;
+               return 1; //success
             }, processError);
         }
         

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace QTec.Hrms.Web.WebApi
+﻿namespace QTec.Hrms.Web.WebApi
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+
     using QTec.Hrms.Business.Contracts;
 
     /// <summary>
@@ -50,9 +50,6 @@ namespace QTec.Hrms.Web.WebApi
             }
         }
 
-        public HttpResponseMessage GetEmployeeLanguages(int empidforLanguage)
-        {
-            
-        }
+        
     }
 }

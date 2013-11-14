@@ -1,5 +1,6 @@
 ﻿namespace QTec.Hrms.DataTier.Repositories
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -68,5 +69,10 @@
                         })
                 .FirstOrDefault(e => e.EmployeeId.Equals(id));
         }
+
+       public IList<EmployeeLanguages> GetEmployeeLanguages(int id)
+       {
+           return this.DbContext.Set<EmployeeLanguages>().Include("Language").Where(e => e.EmployeeId.Equals(id)).ToList();
+       }
     }
 }

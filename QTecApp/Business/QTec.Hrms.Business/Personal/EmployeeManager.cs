@@ -124,5 +124,10 @@
         {
             return this.qTecUnitOfWork.EmployeeRepository.GetEmployeePersonalInfo(id);
         }
+
+       public IList<EmployeeLanguages> GetEmployeeLanguages(int id)
+       {
+           return this.qTecUnitOfWork.EmployeeRepository.GetEmployeeLanguages(id);
+       }
     }
 }

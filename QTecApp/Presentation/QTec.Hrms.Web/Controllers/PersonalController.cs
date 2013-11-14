@@ -26,5 +26,10 @@ namespace QTec.Hrms.Web.Controllers
             return this.PartialView();
         }
 
+        public ActionResult EmployeeEditNew()
+        {
+            return this.PartialView();
+        }
+
     }
 }

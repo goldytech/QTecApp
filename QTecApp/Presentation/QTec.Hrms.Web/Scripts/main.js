@@ -13,11 +13,16 @@ require(
         'directives/wcjqDatePicker',
         'directives/wchrmsMenu',
         'services/dataService',
+        'services/employeepersonalService',
+        'services/languageService',
         'services/modalService',
         'services/configService',
         'filters/nameCityStateFilter',
         'controllers/navbarController',
         'controllers/personal/employeesController',
+        'controllers/personal/employeeEditNewController',
+        'controllers/personal/employeePersonalController',
+        'controllers/personal/employeeLanguagesController',
         'controllers/personal/employeeEditController',
         'controllers/security/menuController'
         

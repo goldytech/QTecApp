@@ -57,5 +57,16 @@
         /// The <see cref="EmployeePersonalInfo"/>.
         /// </returns>
         EmployeePersonalInfo GetEmployeePersonalInfo(int id);
+
+        /// <summary>
+        /// The get employee languages.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IList"/>.
+        /// </returns>
+        IList<EmployeeLanguages> GetEmployeeLanguages(int id);
     }
 }

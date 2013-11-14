@@ -38,6 +38,8 @@ namespace QTec.Hrms.Web
             {
                 config.Formatters.Remove(match);
             }
+
+            config.EnsureInitialized();
         }
     }
 }
