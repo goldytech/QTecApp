@@ -1,6 +1,6 @@
 ﻿'use strict';
 define(['app'], function(app) {
-    app.controller('EmployeeLanguagesController', ['$scope', '$routeParams', 'LanguageDataService','EmployeeDataService', function ($scope, $routeParams,languageDataService,employeePersonalDataservice) {
+    app.controller('EmployeeLanguagesController', ['$scope', '$routeParams', 'LanguageDataService','EmployeeDataService','$rootScope', function ($scope, $routeParams,languageDataService,employeePersonalDataservice,$rootScope) {
 
         // for language object binded to form
         $scope.language = {};
@@ -14,7 +14,7 @@ define(['app'], function(app) {
         $scope.addLanguage = function () {
 
             // Boolean variable to check availability of record
-            var available = false;
+             var available = false;
 
             // Check weather record is available or not. If record is available then update record
             for (var m = 0; m < $scope.employeeLanguages.length; m++) {
@@ -29,19 +29,26 @@ define(['app'], function(app) {
 
                 // the language that is suppose to be added in the table as new row
                 var languageToBeAdded = {};
-                languageToBeAdded.employeeId = 1;
+                languageToBeAdded.employeeId = $scope.language.employeeId;
                 languageToBeAdded.fluency = $scope.language.fluency;
-                var lang = {};
-                var langid = $scope.language.languageId;
-                lang.languageId = langid;
-                lang.name = $scope.languagesMaster[langid].name;
-                languageToBeAdded.language = lang;
+                languageToBeAdded.languageId = $scope.language.languageId;
+                languageToBeAdded.languageName = getLanguageName($scope.language.languageId);
+                
+               
                 
                 //$scope.languagesKnown.employee = $scope.employee;
                 $scope.employeeLanguages.push(languageToBeAdded);
             }
 
             
+        };
+        
+        $scope.selectLanguage = function (index) {
+            $scope.language = $scope.employeeLanguages[index];
+        };
+
+        $scope.saveLanguage = function() {
+            $rootScope.$broadcast("updateEmployeeLanguages", $scope.employeeLanguages);
         };
 
         init();
@@ -53,6 +60,16 @@ define(['app'], function(app) {
 
         }
         
+        function getLanguageName(id) {
+            for (var i = 0; i < $scope.languagesMaster.length; i++) {
+                if ($scope.languagesMaster[i].languageId === id)
+                    return $scope.languagesMaster[i].name;
+
+
+            }
+            return '';
+        }
+
         function getLanguages() {
             languageDataService.getLanguages().then(function (languages) {
                 $scope.languagesMaster = languages.data;
@@ -74,6 +91,7 @@ define(['app'], function(app) {
                     return -1;
                 }
                 $scope.employeeLanguages = empLanguages.data;
+                $scope.language.employeeId = $scope.employeeLanguages[0].employeeId;
                 return 1; //success
             }, processError);
         }

@@ -15,16 +15,16 @@
     public class EmployeeManager : IEmployeeManager
     {
         #region Declarations
-        
+
         /// <summary>
         /// The data repositories unit of work.
         /// </summary>
-        private readonly IQTecUnitOfWork qTecUnitOfWork; 
-        
+        private readonly IQTecUnitOfWork qTecUnitOfWork;
+
         #endregion
-        
+
         #region Constructor
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeManager" /> class.
         /// </summary>
@@ -41,7 +41,7 @@
         }
 
         #endregion
-        
+
         /// <summary>
         /// Gets the designations.
         /// </summary>
@@ -50,7 +50,7 @@
         {
             return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
         }
-        
+
         /// <summary>
         /// Determines whether  email is unique
         /// </summary>
@@ -60,7 +60,7 @@
         {
             return this.qTecUnitOfWork.EmployeeRepository.IsEmailDuplicate(email);
         }
-        
+
         /// <summary>
         /// Gets the employee by id.
         /// </summary>
@@ -79,7 +79,7 @@
             Employee emp = this.qTecUnitOfWork.EmployeeRepository.GetById(id);
             return emp;
         }
-        
+
         /// <summary>
         /// Adds the employee.
         /// </summary>
@@ -89,7 +89,7 @@
             this.qTecUnitOfWork.EmployeeRepository.Add(employee);
             this.qTecUnitOfWork.Commit();
         }
-        
+
         /// <summary>
         /// Updates the employee.
         /// </summary>
@@ -99,7 +99,7 @@
             this.qTecUnitOfWork.EmployeeRepository.Update(employee);
             this.qTecUnitOfWork.Commit();
         }
-        
+
         /// <summary>
         /// Gets the employees.
         /// </summary>
@@ -125,9 +125,79 @@
             return this.qTecUnitOfWork.EmployeeRepository.GetEmployeePersonalInfo(id);
         }
 
-       public IList<EmployeeLanguages> GetEmployeeLanguages(int id)
-       {
-           return this.qTecUnitOfWork.EmployeeRepository.GetEmployeeLanguages(id);
-       }
+        /// <summary>
+        /// The get employee languages.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IList"/>.
+        /// </returns>
+        public IList<EmployeeLanguageInfo> GetEmployeeLanguages(int id)
+        {
+            return this.qTecUnitOfWork.EmployeeRepository.GetEmployeeLanguages(id).Select(
+                empLang => new EmployeeLanguageInfo
+                        {
+                            EmployeeId = empLang.EmployeeId,
+                            Fluency = empLang.Fluency,
+                            LanguageId = empLang.LanguageId,
+                            LanguageName = empLang.Language.Name }).ToList();
+        }
+
+        /// <summary>
+        /// The save employee.
+        /// </summary>
+        /// <param name="employeeId">The employee id.</param>
+        /// <param name="personalInfo">The personal info.</param>
+        /// <param name="languageInfo">The language info.</param>
+        /// <returns>The <see cref="bool" />.</returns>
+        public bool SaveEmployee(int employeeId, EmployeePersonalInfo personalInfo, List<EmployeeLanguageInfo> languageInfo)
+        {
+            if (employeeId > 0) // update employee
+            {
+                var employeetobeUpdated = this.qTecUnitOfWork.EmployeeRepository.GetById(employeeId);
+
+                if (employeetobeUpdated != null)
+                {
+                    employeetobeUpdated.FirstName = personalInfo.FirstName;
+                    employeetobeUpdated.LastName = personalInfo.LastName;
+                    employeetobeUpdated.EmployeeId = employeeId;
+                    employeetobeUpdated.Email = personalInfo.Email;
+                    employeetobeUpdated.DesignationId = personalInfo.DesignationId;
+
+                }
+
+                foreach (var employeeLanguageInfo in languageInfo)
+                {
+                    if (employeetobeUpdated == null)
+                    {
+                        continue;
+                    }
+
+                    var languageTobeUpdated = employeetobeUpdated.Languages.FirstOrDefault(lang => lang.LanguageId.Equals(employeeLanguageInfo.LanguageId) && lang.EmployeeId.Equals(employeeId));
+
+                    if (languageTobeUpdated != null)
+                    {
+                        languageTobeUpdated.Fluency = employeeLanguageInfo.Fluency;
+                    }
+                    else
+                    {
+                        //// the language is not found in the current languages collection that is associated with the employee so add a new
+                        employeetobeUpdated.Languages.Add(
+                            new EmployeeLanguages
+                                {
+                                    EmployeeId = employeeLanguageInfo.EmployeeId,
+                                    Fluency = employeeLanguageInfo.Fluency,
+                                    LanguageId = employeeLanguageInfo.LanguageId
+                                });
+                    }
+
+                }
+
+                this.qTecUnitOfWork.EmployeeRepository.Update(employeetobeUpdated);
+                this.qTecUnitOfWork.Commit();
+            }
+        }
     }
 }

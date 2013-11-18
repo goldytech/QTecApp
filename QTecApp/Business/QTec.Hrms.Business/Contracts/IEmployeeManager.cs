@@ -67,6 +67,23 @@
         /// <returns>
         /// The <see cref="IList"/>.
         /// </returns>
-        IList<EmployeeLanguages> GetEmployeeLanguages(int id);
+        IList<EmployeeLanguageInfo> GetEmployeeLanguages(int id);
+
+        /// <summary>
+        /// The save employee.
+        /// </summary>
+        /// <param name="employeeId">
+        /// The employee id.
+        /// </param>
+        /// <param name="personalInfo">
+        /// The personal info.
+        /// </param>
+        /// <param name="languageInfo">
+        /// The language info.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        bool SaveEmployee(int employeeId, EmployeePersonalInfo personalInfo, List<EmployeeLanguageInfo> languageInfo);
     }
 }

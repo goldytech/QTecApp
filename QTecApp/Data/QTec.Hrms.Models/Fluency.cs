@@ -8,17 +8,17 @@
        /// <summary>
        /// Can only write
        /// </summary>
-       Written,
+       Beginner =0,
 
        /// <summary>
        /// Can only speak
        /// </summary>
-       Spoken,
+       Intermediate =1,
 
        /// <summary>
        /// Can read and write.
        /// </summary>
-       Both
+       Expert=2
        
     }
 }

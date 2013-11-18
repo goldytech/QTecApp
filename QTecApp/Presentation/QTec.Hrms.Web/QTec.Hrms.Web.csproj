@@ -175,6 +175,7 @@
     <Content Include="app\directives\wcjqDatePicker.js" />
     <Content Include="app\directives\wcOverlay.js" />
     <Content Include="app\directives\wcUnique.js" />
+    <Content Include="app\filters\fluencyFilter.js" />
     <Content Include="app\filters\nameCityStateFilter.js" />
     <Content Include="app\partials\dialog.html" />
     <Content Include="app\partials\emplanguages.html" />
@@ -271,9 +272,16 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-ui-bootstrap.js" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-2.0.3-vsdoc.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />

@@ -34,7 +34,9 @@
 
     <button id="addLang" data-ng-click="addLanguage()">Add New Language in Grid</button><br />
     <br />
-
+    <!--TODO make the button enable / disable-->
+    <button id="Button1" data-ng-click="saveLanguage()">Save Languages</button><br /> 
+    <br />
     <div class="row gridContainer customersTable show-hide-animation" data-ng-show="true">
         <div class="span10">
             <table class="table table-striped table-condensed">
@@ -49,10 +51,10 @@
                 <tbody>
                     <tr data-ng-repeat="employeeLanguage in employeeLanguages" class="repeat-animation">
                         <td>
-                            <span>{{employeeLanguage.language.name}}</span>
+                            <span>{{employeeLanguage.languageName}}</span>
                         </td>
                         <td>
-                            <span>{{employeeLanguage.fluency}}</span>
+                            <span>{{employeeLanguage.fluency | languageFluency}} </span>
                         </td>
                         <td>
                             <button class="btn btn-primary" data-ng-click="selectLanguage($index)">Edit</button>

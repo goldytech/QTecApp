@@ -18,6 +18,7 @@ require(
         'services/modalService',
         'services/configService',
         'filters/nameCityStateFilter',
+        'filters/fluencyFilter',
         'controllers/navbarController',
         'controllers/personal/employeesController',
         'controllers/personal/employeeEditNewController',
