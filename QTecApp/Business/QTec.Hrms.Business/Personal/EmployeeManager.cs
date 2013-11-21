@@ -165,7 +165,7 @@
                 var languagesToBeDeleted = new List<EmployeeLanguages>();
                 if (employeetobeUpdated != null && personalInfo != null)
                 {
-                    //TODO Use Auto Mapper so that this conversion doesn't take place
+                    //// TODO Use Auto Mapper so that this conversion doesn't take place
                     employeetobeUpdated.FirstName = personalInfo.FirstName;
                     employeetobeUpdated.LastName = personalInfo.LastName;
                     employeetobeUpdated.EmployeeId = employeeId;
@@ -233,12 +233,11 @@
                                         LanguageId = employeeLanguageInfo.LanguageId
                                     });
                         }
-
-
-
-                        this.qTecUnitOfWork.EmployeeRepository.Update(employeetobeUpdated);
-                        this.qTecUnitOfWork.Commit();
+ 
                     }
+
+                    this.qTecUnitOfWork.EmployeeRepository.Update(employeetobeUpdated);
+                    this.qTecUnitOfWork.Commit();
                 }
             }
             return false;
