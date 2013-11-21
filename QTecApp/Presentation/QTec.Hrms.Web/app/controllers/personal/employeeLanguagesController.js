@@ -50,6 +50,10 @@ define(['app'], function(app) {
         $scope.saveLanguage = function() {
             $rootScope.$broadcast("updateEmployeeLanguages", $scope.employeeLanguages);
         };
+        
+        $scope.deleteLanguage = function (index) {
+            $scope.employeeLanguages.splice(index, 1);
+        };
 
         init();
         function init() {

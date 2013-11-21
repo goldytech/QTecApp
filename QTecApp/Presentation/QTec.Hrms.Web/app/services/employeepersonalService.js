@@ -35,6 +35,22 @@ define(['app'], function (app) {
                                                           return data;
                                                       });
         };
+        
+        employeePersonalDataService.saveEmployee = function (employeeInfo) {
+            return $http({ method: 'PUT', url: baseurl + employeeInfo.employeePersonalInfo.employeeId ,data:employeeInfo}).
+                                                        success(function (data, status, headers, config) {
+                                                            alert(status);
+                                                            // this callback will be called asynchronously
+                                                            // when the response is available
+                                                            // alert(headers);
+                                                            return data;
+                                                        }).
+                                                      error(function (data, status, headers, config) {
+                                                          // called asynchronously if an error occurs
+                                                          // or server returns response with an error status.
+                                                          return data;
+                                                      });
+        };
         return employeePersonalDataService;
 
 

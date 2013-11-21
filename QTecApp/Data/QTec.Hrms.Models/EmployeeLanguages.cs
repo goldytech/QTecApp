@@ -1,5 +1,7 @@
 ﻿namespace QTec.Hrms.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     /// <summary>
     /// The employee languages.
     /// </summary>
@@ -35,6 +37,7 @@
         /// <summary>
         /// Gets or sets the language id.
         /// </summary>
+        [ForeignKey("Language")]
         public int LanguageId
         {
             get;

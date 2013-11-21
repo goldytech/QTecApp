@@ -33,6 +33,8 @@
             get;
         }
 
+
+        IRepository<EmployeeLanguages> EmployeeLanguagesRepository { get; }
         /// <summary>
         /// Commits the changes in database.
         /// </summary>

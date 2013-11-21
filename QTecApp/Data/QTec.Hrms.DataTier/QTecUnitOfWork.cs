@@ -1,5 +1,4 @@
-﻿  
-namespace QTec.Hrms.DataTier
+﻿namespace QTec.Hrms.DataTier
 {
     using System;
     using QTec.Hrms.DataTier.Contracts;
@@ -10,8 +9,6 @@ namespace QTec.Hrms.DataTier
     /// </summary>
     public class QTecUnitOfWork : IQTecUnitOfWork, IDisposable
     {
-       
-
         /// <summary>
         /// Initializes a new instance of the <see cref="QTecUnitOfWork" /> class.
         /// </summary>
@@ -78,6 +75,18 @@ namespace QTec.Hrms.DataTier
                 return this.GetStandardRepo<Language>();
             }
         }
+
+        /// <summary>
+        /// Gets the employee languages repository.
+        /// </summary>
+        public IRepository<EmployeeLanguages> EmployeeLanguagesRepository 
+        {
+            get
+            {
+                return this.GetStandardRepo<EmployeeLanguages>();
+            }
+        }
+
         /// <summary>
         /// Commits the changes in database.
         /// </summary>

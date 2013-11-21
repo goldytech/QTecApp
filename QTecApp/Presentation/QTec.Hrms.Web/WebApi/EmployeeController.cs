@@ -3,6 +3,7 @@
     using System.Web.Http;
 
     using QTec.Hrms.Business.Contracts;
+    using QTec.Hrms.Models.Dto;
 
     [RoutePrefix("api")]
     public class EmployeeController : ApiController
@@ -49,6 +50,7 @@
         /// The <see cref="IHttpActionResult"/>.
         /// </returns>
         [Route("employees/{id:int}/languages")]
+        [HttpGet]
         public IHttpActionResult GetEmployeeLanguages(int id)
         {
             var languages = this.employeeManager.GetEmployeeLanguages(id);
@@ -59,6 +61,26 @@
             }
 
             return this.Ok(languages);
-        } 
+        }
+
+        /// <summary>
+        /// The save employee.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <param name="employeeInfo">
+        /// The employee info.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IHttpActionResult"/>.
+        /// </returns>
+        [HttpPut]
+        [Route("employees/{id:int}")]
+        public IHttpActionResult SaveEmployee(int id, [FromBody] EmployeeInfo employeeInfo)
+        {
+            this.employeeManager.SaveEmployee(id, employeeInfo.EmployeePersonalInfo, employeeInfo.EmployeeLanguages);
+            return this.Ok();
+        }
     }
 }

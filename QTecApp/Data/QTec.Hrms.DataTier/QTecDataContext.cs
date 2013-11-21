@@ -13,6 +13,8 @@
         /// </summary>
         public QTecDataContext() : base(nameOrConnectionString: "QTec")
         {
+            this.Configuration.ProxyCreationEnabled = false;
+            //this.Configuration.LazyLoadingEnabled = false;
             Database.SetInitializer(new QTecDbInitializer());
         }
 
