@@ -4,6 +4,7 @@
 
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Models.Dto;
+    using QTec.Hrms.Web.ActionFilters;
 
     [RoutePrefix("api")]
     public class EmployeeController : ApiController
@@ -51,6 +52,7 @@
         /// </returns>
         [Route("employees/{id:int}/languages")]
         [HttpGet]
+        [Cache(CacheExpiryDuration = 60)]
         public IHttpActionResult GetEmployeeLanguages(int id)
         {
             var languages = this.employeeManager.GetEmployeeLanguages(id);

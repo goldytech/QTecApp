@@ -10,6 +10,7 @@ namespace QTec.Hrms.Web.WebApi
     using System.Web;
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Models;
+    using QTec.Hrms.Web.ActionFilters;
 
     public class PersonalController : ApiController
     {
@@ -29,6 +30,7 @@ namespace QTec.Hrms.Web.WebApi
 
         [HttpGet]
         [Queryable]
+        [Cache(CacheExpiryDuration = 60)]
         public IQueryable<Employee> Employees()
         {
             var query = this.employeeManager.GetEmployees();
