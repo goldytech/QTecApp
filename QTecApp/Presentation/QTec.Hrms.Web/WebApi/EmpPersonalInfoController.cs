@@ -1,4 +1,4 @@
-﻿namespace QTec.Hrms.Web.WebApi
+﻿ namespace QTec.Hrms.Web.WebApi
 {
     using System;
     using System.Net;

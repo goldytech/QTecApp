@@ -83,7 +83,8 @@ define(['app'], function (app) {
             resource += (arguments.length == 3) ? buildPagingUri(pageIndex, pageSize) : '';
             return $http.get(serviceBase + resource).then(function (data) {
                 return {
-                    totalRecords: parseInt(data.headers('X-InlineCount')),
+                    totalRecords:20,
+                    //totalRecords: parseInt(data.headers('X-InlineCount')),
                     results: data.data
                 };
             });

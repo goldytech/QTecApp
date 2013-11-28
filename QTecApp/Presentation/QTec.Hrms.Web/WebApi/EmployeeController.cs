@@ -79,6 +79,7 @@
         /// </returns>
         [HttpPut]
         [Route("employees/{id:int}")]
+        [ETag]
         public IHttpActionResult SaveEmployee(int id, [FromBody] EmployeeInfo employeeInfo)
         {
             this.employeeManager.SaveEmployee(id, employeeInfo.EmployeePersonalInfo, employeeInfo.EmployeeLanguages);

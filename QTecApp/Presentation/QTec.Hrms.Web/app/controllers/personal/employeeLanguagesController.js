@@ -14,15 +14,18 @@ define(['app'], function(app) {
         $scope.addLanguage = function () {
 
             // Boolean variable to check availability of record
-             var available = false;
+             var available;
 
             // Check weather record is available or not. If record is available then update record
-            for (var m = 0; m < $scope.employeeLanguages.length; m++) {
-                if ($scope.employeeLanguages[m].languageId === $scope.language.languageId) {
-                    $scope.employeeLanguages[m] = $scope.language;
-                    available = true;
-                }
-            }
+            available = Enumerable.From($scope.employeeLanguages).Any(function(x) {
+                return x.languageName === getLanguageName($scope.language.languageId);
+            });
+            //for (var m = 0; m < $scope.employeeLanguages.length; m++) {
+            //    if ($scope.employeeLanguages[m].languageId === $scope.language.languageId) {
+            //        $scope.employeeLanguages[m] = $scope.language;
+            //        available = true;
+            //    }
+            //}
 
             // If record is not available then add it
             if (!available) {
@@ -42,7 +45,16 @@ define(['app'], function(app) {
 
             
         };
-        
+
+        $scope.reset = function() {
+            //alert($scope.language.languageId);
+            var selectedLanguage = Enumerable.From($scope.languagesMaster).Where(function(x) {
+              return  x.languageId === $scope.language.languageId;
+            });
+
+            $scope.language.languageName = selectedLanguage.name;
+        };
+
         $scope.selectLanguage = function (index) {
             $scope.language = $scope.employeeLanguages[index];
         };

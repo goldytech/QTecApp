@@ -181,7 +181,7 @@
                 {
 
                     var employeeLanguages =
-                        this.qTecUnitOfWork.EmployeeLanguagesRepository.GetAll()
+                        this.qTecUnitOfWork.EmployeeLanguagesRepository.GetAll().ToList()
                             .Where(
                                 employeeLanguage => employeeLanguage.EmployeeId.Equals(employeetobeUpdated.EmployeeId));
 
@@ -215,9 +215,12 @@
                     {
 
 
-
                         var languageTobeUpdated =
-                            this.qTecUnitOfWork.EmployeeLanguagesRepository.GetById(employeeLanguageInfo.LanguageId);
+                            employeeLanguages.FirstOrDefault(
+                                e =>
+                                e.EmployeeId.Equals(employeeId) && e.LanguageId.Equals(employeeLanguageInfo.LanguageId));
+
+                        //var languageTobeUpdated =this.qTecUnitOfWork.EmployeeLanguagesRepository.GetById(employeeLanguageInfo.LanguageId);
                             
                         if (languageTobeUpdated != null)
                         {

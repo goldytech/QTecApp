@@ -6,7 +6,7 @@
         <div class="span10">
             <select name="language" required
                 data-ng-model="language.languageId"
-                data-ng-options="selectedlanguage.languageId as selectedlanguage.name for selectedlanguage in languagesMaster">
+                data-ng-options="selectedlanguage.languageId as selectedlanguage.name for selectedlanguage in languagesMaster" >
                 <option selected="selected" value="">Select Language</option>
             </select>
             <span class="errorMessage" data-ng-show="empLangsEditForm.language.$dirty && editForm.language.$error.required">Language is required
