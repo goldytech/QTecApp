@@ -177,24 +177,24 @@
 
                 //// get list of current employee languages which are not available in the employeeLanguageListInfo param
 
-                if (employeetobeUpdated != null)
+                if (employeetobeUpdated != null && employeeLanguageListInfo != null)
                 {
-
                     var employeeLanguages =
-                        this.qTecUnitOfWork.EmployeeLanguagesRepository.GetAll().ToList()
-                            .Where(
-                                employeeLanguage => employeeLanguage.EmployeeId.Equals(employeetobeUpdated.EmployeeId));
+                        this.qTecUnitOfWork.EmployeeLanguagesRepository.GetAll().Where(employeeLanguage => employeeLanguage.EmployeeId.Equals(employeetobeUpdated.EmployeeId));
 
                     foreach (var employeeLanguage in employeeLanguages)
                     {
                         var langId = employeeLanguage.LanguageId;
                         var found = false;
 
-                        foreach (var languageInfo in employeeLanguageListInfo)
+                        if (employeeLanguageListInfo != null)
                         {
-                            if (languageInfo.LanguageId.Equals(langId))
+                            foreach (var languageInfo in employeeLanguageListInfo)
                             {
-                                found = true; //// language is present in the employeeLanguages
+                                if (languageInfo.LanguageId.Equals(langId))
+                                {
+                                    found = true; //// language is present in the employeeLanguages
+                                }
                             }
                         }
 
@@ -204,44 +204,46 @@
                             languagesToBeDeleted.Add(employeeLanguage);
                         }
                     }
-
-
                     foreach (var employeeLanguage in languagesToBeDeleted)
                     {
                        this.qTecUnitOfWork.EmployeeLanguagesRepository.Delete(employeeLanguage);
                     }
 
-                    foreach (var employeeLanguageInfo in employeeLanguageListInfo)
+                    if (employeeLanguageListInfo != null)
                     {
+                        foreach (var employeeLanguageInfo in employeeLanguageListInfo)
+                        {
 
 
-                        var languageTobeUpdated =
-                            employeeLanguages.FirstOrDefault(
-                                e =>
-                                e.EmployeeId.Equals(employeeId) && e.LanguageId.Equals(employeeLanguageInfo.LanguageId));
+                            var languageTobeUpdated =
+                                employeeLanguages.FirstOrDefault(
+                                    e =>
+                                    e.EmployeeId.Equals(employeeId) && e.LanguageId.Equals(employeeLanguageInfo.LanguageId));
 
-                        //var languageTobeUpdated =this.qTecUnitOfWork.EmployeeLanguagesRepository.GetById(employeeLanguageInfo.LanguageId);
+                            //var languageTobeUpdated =this.qTecUnitOfWork.EmployeeLanguagesRepository.GetById(employeeLanguageInfo.LanguageId);
                             
-                        if (languageTobeUpdated != null)
-                        {
-                            this.qTecUnitOfWork.EmployeeLanguagesRepository.Update(languageTobeUpdated);
-                        }
-                        else
-                        {
-                            //// the language is not found in the current languages collection that is associated with the employee so add a new
-                            this.qTecUnitOfWork.EmployeeLanguagesRepository.Add(new EmployeeLanguages
-                                    {
-                                        EmployeeId = employeeLanguageInfo.EmployeeId,
-                                        Fluency = employeeLanguageInfo.Fluency,
-                                        LanguageId = employeeLanguageInfo.LanguageId
-                                    });
-                        }
+                            if (languageTobeUpdated != null)
+                            {
+                                this.qTecUnitOfWork.EmployeeLanguagesRepository.Update(languageTobeUpdated);
+                            }
+                            else
+                            {
+                                //// the language is not found in the current languages collection that is associated with the employee so add a new
+                                this.qTecUnitOfWork.EmployeeLanguagesRepository.Add(new EmployeeLanguages
+                                                                                        {
+                                                                                            EmployeeId = employeeLanguageInfo.EmployeeId,
+                                                                                            Fluency = employeeLanguageInfo.Fluency,
+                                                                                            LanguageId = employeeLanguageInfo.LanguageId
+                                                                                        });
+                            }
  
+                        }
                     }
+                }
 
                     this.qTecUnitOfWork.EmployeeRepository.Update(employeetobeUpdated);
                     this.qTecUnitOfWork.Commit();
-                }
+                return true;
             }
             return false;
         }

@@ -97,7 +97,7 @@ namespace QTec.Hrms.DataTier.Repositories
                 throw new NotImplementedException("No factory for repository type, " + typeof(T).FullName);
             }
             var repo = (T)f(dbContext);
-            Repositories[typeof(T)] = repo;
+            this.Repositories[typeof(T)] = repo;
             return repo;
         }
 

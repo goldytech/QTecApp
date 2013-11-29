@@ -80,10 +80,10 @@
             /// You can substitute an alternative factory for the default one by adding
             /// a repository factory for type "T" to <see cref="_repositoryFactories"/>.
             /// </remarks>
-            public Func<DbContext, object> GetRepositoryFactoryForEntityType<T>() where T : class
-            {
-                return GetRepositoryFactory<T>() ?? DefaultEntityRepositoryFactory<T>();
-            }
+        public Func<DbContext, object> GetRepositoryFactoryForEntityType<T>() where T : class
+        {
+            return this.GetRepositoryFactory<T>() ?? this.DefaultEntityRepositoryFactory<T>();
+        }
 
             /// <summary>
             /// Default factory for a <see cref="IRepository{T}"/> where T is an entity.

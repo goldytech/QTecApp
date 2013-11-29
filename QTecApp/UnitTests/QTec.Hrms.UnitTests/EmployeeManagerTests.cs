@@ -15,6 +15,7 @@ namespace QTec.Hrms.UnitTests
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.DataTier.Repositories;
     using QTec.Hrms.Models;
+    using QTec.Hrms.Models.Dto;
 
     using Telerik.JustMock;
 
@@ -133,9 +134,56 @@ namespace QTec.Hrms.UnitTests
                 
             }
 
-            
-
-            
         }
+
+        [TestMethod]
+        public void CheckIfEmployeePersonalDetailsIsSaved()
+        {
+            // ARRANGE
+            var uow = Mock.Create<IQTecUnitOfWork>(Behavior.Loose);
+
+            var employeeToBeUpdated = new Employee
+            {
+                DateOfBirth = new DateTime(2012, 1, 1), 
+                DesignationId = 2, 
+                Email = "abc@domain.com", 
+                FirstName = "Abc", 
+                LastName = "XYZ"
+            };
+
+             var employeePersonalDtoinParamater = new EmployeePersonalInfo
+                                                {
+                                                    DateOfBirth = new DateTime(2012, 1, 1), 
+                                                    DesignationId = 2, 
+                                                    Email = "abc@domain.com", 
+                                                    FirstName = "AbcDef", //firstname is changed
+                                                    LastName = "XYZ"
+                                                };
+            Mock.Arrange(() => uow.EmployeeRepository.GetById(Arg.AnyInt)).Returns(employeeToBeUpdated);
+
+            Mock.Arrange(() => uow.EmployeeRepository.Update(Arg.IsAny<Employee>()))
+                .DoInstead(() => { employeeToBeUpdated.FirstName = employeePersonalDtoinParamater.FirstName; })
+                .OccursOnce();
+
+            Mock.Arrange(() => uow.EmployeeLanguagesRepository.GetAll()).DoNothing();
+
+            // ACT
+            var classunderTest = new EmployeeManager(uow);
+            classunderTest.SaveEmployee(1, employeePersonalDtoinParamater, null);
+
+
+            //ASSERT
+
+            Assert.AreEqual("AbcDef", employeeToBeUpdated.FirstName);
+            Mock.Assert(uow);
+
+
+
+
+
+
+        }
+
+
     }
 }
