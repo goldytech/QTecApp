@@ -23,7 +23,7 @@ define(['app'], function (app) {
         employeePersonalDataService.getLanguagesforEmployee = function (id) {
             return $http({ method: 'GET', url: baseurl + id + '/languages' }).
                                                         success(function (data, status, headers, config) {
-                                                            alert(status);
+                                                          //  alert(status);
                                                             // this callback will be called asynchronously
                                                             // when the response is available
                                                             // alert(headers);

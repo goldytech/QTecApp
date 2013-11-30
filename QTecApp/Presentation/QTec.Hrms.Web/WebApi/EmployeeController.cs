@@ -29,6 +29,8 @@
         /// The <see cref="IHttpActionResult"/>.
         /// </returns>
         [Route("employees/{id:int}/personal")]
+        [Cache(CacheExpiryDuration =30)]
+        [ETag]
         public IHttpActionResult GetEmployeePersonalInfo(int id)
         {
             var empPersonalInfo = this.employeeManager.GetEmployeePersonalInfo(id);
@@ -52,7 +54,8 @@
         /// </returns>
         [Route("employees/{id:int}/languages")]
         [HttpGet]
-        [Cache(CacheExpiryDuration = 60)]
+        //[Cache(CacheExpiryDuration = 60)]
+        //[ETag]
         public IHttpActionResult GetEmployeeLanguages(int id)
         {
             var languages = this.employeeManager.GetEmployeeLanguages(id);

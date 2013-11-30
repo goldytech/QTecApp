@@ -14,7 +14,7 @@ define(['app'], function(app) {
 
         $scope.saveEmployee = function () {
             employeeDataService.saveEmployee(employeeInfo).then(function (data,status) {
-                alert(data);
+              //  alert(data);
             });
         };
 

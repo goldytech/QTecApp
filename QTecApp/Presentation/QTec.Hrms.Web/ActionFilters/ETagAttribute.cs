@@ -69,12 +69,25 @@
             bool isGet = request.Method == HttpMethod.Get;
             bool isPutOrPost = request.Method == HttpMethod.Put || request.Method == HttpMethod.Post;
 
-            if ((isGet && !etags.TryGetValue(key, out etag)) || isPutOrPost)
+
+            if (isPutOrPost)
             {
+                ////empty the dictionary because the resource has been changed.So now all tags will be cleared and data 
+                //// will be fetched from server. It would be good to implement a logic in which only change the ETags 
+                //// of that urls which are affected by this post or put method rather than clearing entire dictionary
+                     etags.Clear();
                 //// generate new ETag for Put or Post because the resource is changed.
-                etag = new EntityTagHeaderValue("\"" + Guid.NewGuid().ToString() + "\"");
-                etags.AddOrUpdate(key, etag, (k, val) => etag);
+                    etag = new EntityTagHeaderValue("\"" + Guid.NewGuid().ToString() + "\"");
+                    etags.AddOrUpdate(key, etag, (k, val) => etag);
+
+
             }
+            //if ((isGet && !etags.TryGetValue(key, out etag)) || isPutOrPost)
+            //{
+            //    //// generate new ETag for Put or Post because the resource is changed.
+            //    etag = new EntityTagHeaderValue("\"" + Guid.NewGuid().ToString() + "\"");
+            //    etags.AddOrUpdate(key, etag, (k, val) => etag);
+            //}
 
             if (isGet)
             {
