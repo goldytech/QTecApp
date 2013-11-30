@@ -29,7 +29,7 @@ namespace QTec.Hrms.Web.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<RepositoryFactories>().To<RepositoryFactories>().InSingletonScope();
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
-            kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>();
+            kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>().InSingletonScope();
             kernel.Bind<IEmployeeManager>().To<EmployeeManager>();
             kernel.Bind<ILanguageManager>().To<LanguageManager>();
             if (configuration != null)
