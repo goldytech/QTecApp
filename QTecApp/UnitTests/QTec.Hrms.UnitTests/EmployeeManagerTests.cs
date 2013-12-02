@@ -172,18 +172,101 @@ namespace QTec.Hrms.UnitTests
             classunderTest.SaveEmployee(1, employeePersonalDtoinParamater, null);
 
 
-            //ASSERT
-
+            // ASSERT
             Assert.AreEqual("AbcDef", employeeToBeUpdated.FirstName);
             Mock.Assert(uow);
-
-
-
-
-
-
         }
 
+        [TestMethod]
+        public void CheckWhetherLanguagesAreGettingUpdatedInEmployeeSave()
+        {
+            // ARRANGE
+            var uow = Mock.Create<IQTecUnitOfWork>(Behavior.Loose);
 
+            var employeeToBeUpdated = new Employee
+            {
+                DateOfBirth = new DateTime(2012, 1, 1),
+                DesignationId = 2,
+                Email = "abc@domain.com",
+                FirstName = "Abc",
+                LastName = "XYZ"
+            };
+
+            var employeePersonalDtoinParamater = new EmployeePersonalInfo
+            {
+                DateOfBirth = new DateTime(2012, 1, 1),
+                DesignationId = 2,
+                Email = "abc@domain.com",
+                FirstName = "AbcDef", // firstname is changed
+                LastName = "XYZ"
+            };
+            Mock.Arrange(() => uow.EmployeeRepository.GetById(Arg.AnyInt)).Returns(employeeToBeUpdated);
+
+            var currentEmployeeLanguagesKnown = new List<EmployeeLanguages>
+                                                    {
+                                                        new EmployeeLanguages
+                                                            {
+                                                                EmployeeId = 1,
+                                                                Fluency = 1,
+                                                                LanguageId = 1
+                                                            },
+                                                        new EmployeeLanguages
+                                                            {
+                                                                EmployeeId = 1,
+                                                                Fluency = 1,
+                                                                LanguageId = 2
+                                                            }
+                                                    };
+
+            Mock.Arrange(() => uow.EmployeeLanguagesRepository.GetAll()).Returns(currentEmployeeLanguagesKnown.AsQueryable);
+
+            //// updating fluency from 1 to 2
+            var employeeLanguagesInfoParamater = new List<EmployeeLanguageInfo>
+                                                     {
+                                                         new EmployeeLanguageInfo
+                                                             {
+                                                                 EmployeeId = 1,
+                                                                 Fluency = 2,
+                                                                 LanguageId = 1
+                                                             },
+                                                         new EmployeeLanguageInfo
+                                                             {
+                                                                 EmployeeId = 1,
+                                                                 Fluency = 2,
+                                                                 LanguageId = 2
+                                                             }
+                                                     };
+
+            Mock.Arrange(() => uow.EmployeeLanguagesRepository.Update(Arg.IsAny<EmployeeLanguages>())).DoInstead(
+                () =>
+                    {
+                        foreach (var employeeLanguageInfo in employeeLanguagesInfoParamater)
+                        {
+                            var languageToBeUpdated =
+                                currentEmployeeLanguagesKnown.FirstOrDefault(
+                                    lang => lang.EmployeeId == 1 && lang.LanguageId == employeeLanguageInfo.LanguageId);
+
+                            if (languageToBeUpdated != null)
+                            {
+                                languageToBeUpdated.Fluency = employeeLanguageInfo.Fluency;
+                               
+                            }
+                        }
+                    });
+
+            // ACT
+            var classunderTest = new EmployeeManager(uow);
+            classunderTest.SaveEmployee(1, employeePersonalDtoinParamater, employeeLanguagesInfoParamater);
+
+
+            // ASSERT
+            var firstOrDefault = currentEmployeeLanguagesKnown.FirstOrDefault();
+            if (firstOrDefault != null)
+            {
+                Assert.AreEqual(2, firstOrDefault.Fluency);
+            }
+
+            Mock.Assert(uow);
+        }
     }
 }
