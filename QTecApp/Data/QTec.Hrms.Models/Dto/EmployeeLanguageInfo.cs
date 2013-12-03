@@ -1,5 +1,7 @@
 ﻿namespace QTec.Hrms.Models.Dto
 {
+    using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+
     /// <summary>
     ///  Represents Employee Language ViewModel
     /// </summary>
@@ -39,7 +41,8 @@
         /// Gets or sets the fluency.
         /// </summary>
         /// <value>The fluency.</value>
-        public int Fluency
+        [EnumConversionValidator(typeof(Fluency), MessageTemplate = "Fluency must be value from '{3}' enumeration")]
+        public Fluency Fluency
         {
             get;
             set;

@@ -1,14 +1,17 @@
 ﻿namespace QTec.Hrms.Business.Personal
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
     using QTec.Hrms.Business.Aspects;
     using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Business.CustomExceptions;
+    using QTec.Hrms.Business.Utils;
     using QTec.Hrms.DataTier.Contracts;
     using QTec.Hrms.Models;
     using QTec.Hrms.Models.Dto;
+    
 
     /// <summary>
     /// The employee manager.
@@ -142,7 +145,7 @@
                         new EmployeeLanguageInfo
                             {
                                 EmployeeId = empLang.EmployeeId,
-                                Fluency = empLang.Fluency,
+                                Fluency = (Fluency)empLang.Fluency,
                                 LanguageId = empLang.LanguageId,
                                 LanguageName = empLang.Language.Name
                             })
@@ -156,9 +159,15 @@
         /// <param name="personalInfo">The personal info.</param>
         /// <param name="employeeLanguageListInfo">The language info.</param>
         /// <returns>The <see cref="bool" />.</returns>
-        public bool SaveEmployee(
-            int employeeId, EmployeePersonalInfo personalInfo, List<EmployeeLanguageInfo> employeeLanguageListInfo)
+        [ExceptionAspect]
+        public bool SaveEmployee(int employeeId, EmployeePersonalInfo personalInfo, List<EmployeeLanguageInfo> employeeLanguageListInfo)
         {
+
+            if (!personalInfo.IsValid())
+            {
+                throw new BusinessRulesException(personalInfo.Errors.ToErrorMessage());
+            }
+            
             if (employeeId > 0) // update employee
             {
                 var employeetobeUpdated = this.qTecUnitOfWork.EmployeeRepository.GetById(employeeId);
@@ -232,7 +241,7 @@
                                 this.qTecUnitOfWork.EmployeeLanguagesRepository.Add(new EmployeeLanguages
                                                                                         {
                                                                                             EmployeeId = employeeLanguageInfo.EmployeeId,
-                                                                                            Fluency = employeeLanguageInfo.Fluency,
+                                                                                            Fluency = (int)employeeLanguageInfo.Fluency,
                                                                                             LanguageId = employeeLanguageInfo.LanguageId
                                                                                         });
                             }

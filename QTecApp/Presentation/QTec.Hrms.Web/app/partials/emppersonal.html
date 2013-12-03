@@ -17,10 +17,10 @@
                         First Name:
                     </div>
                     <div class="span10">
-                        <input type="text" name="firstName" data-ng-model="personal.firstName" required />
-                        <span class="errorMessage" ng-show="personalEditForm.firstName.$dirty && personalEditForm.firstName.$error.required">
+                        <input type="text" name="firstName" data-ng-model="personal.firstName" />
+                        <!--<span class="errorMessage" ng-show="personalEditForm.firstName.$dirty && personalEditForm.firstName.$error.required">
                             First name is required
-                        </span>
+                        </span>-->
                     </div>
                 </div>
                 <div class="row">
@@ -105,7 +105,7 @@
                
                <div class="row">
                     <div class="span12">
-                        <button type="submit" class="btn btn-primary" data-ng-click="saveEmployeePersonalDetails()" ng-disabled="personalEditForm.$invalid">Save Personal Info</button>
+                        <button type="submit" class="btn btn-primary" data-ng-click="saveEmployeePersonalDetails()">Save Personal Info</button>
                       
                     </div>
                 </div>

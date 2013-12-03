@@ -4,11 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace QTec.Hrms.UnitTests
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using Microsoft.Practices.Unity;
 
-    using QTec.Hrms.Business.Contracts;
     using QTec.Hrms.Business.CustomExceptions;
     using QTec.Hrms.Business.Personal;
     using QTec.Hrms.DataTier;
@@ -19,9 +19,16 @@ namespace QTec.Hrms.UnitTests
 
     using Telerik.JustMock;
 
+    /// <summary>
+    /// The employee manager tests.
+    /// </summary>
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class EmployeeManagerTests
     {
+        /// <summary>
+        /// The container.
+        /// </summary>
         private IUnityContainer container;
         [TestInitialize]
         public void Setup()
@@ -226,13 +233,13 @@ namespace QTec.Hrms.UnitTests
                                                          new EmployeeLanguageInfo
                                                              {
                                                                  EmployeeId = 1,
-                                                                 Fluency = 2,
+                                                                 Fluency = (Fluency)2,
                                                                  LanguageId = 1
                                                              },
                                                          new EmployeeLanguageInfo
                                                              {
                                                                  EmployeeId = 1,
-                                                                 Fluency = 2,
+                                                                 Fluency = (Fluency)2,
                                                                  LanguageId = 2
                                                              }
                                                      };
@@ -248,7 +255,7 @@ namespace QTec.Hrms.UnitTests
 
                             if (languageToBeUpdated != null)
                             {
-                                languageToBeUpdated.Fluency = employeeLanguageInfo.Fluency;
+                                languageToBeUpdated.Fluency = (int)employeeLanguageInfo.Fluency;
                                
                             }
                         }
