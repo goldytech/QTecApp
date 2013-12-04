@@ -1,8 +1,9 @@
 ﻿namespace QTec.Hrms.Business.Personal
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+
+    using Microsoft.Practices.ServiceLocation;
 
     using QTec.Hrms.Business.Aspects;
     using QTec.Hrms.Business.Contracts;
@@ -37,11 +38,17 @@
         [ExceptionAspect]
         public EmployeeManager(IQTecUnitOfWork qTecUnitOfWork)
         {
-            //if (qTecUnitOfWork == null)
-            //{
-            //    throw new ArgumentNullException("qTecUnitOfWork");
-            //}
+            
             this.qTecUnitOfWork = qTecUnitOfWork;
+
+           // var myobj = ServiceLocator.Current.GetInstance<IQTecUnitOfWork>();
+ 
+        }
+
+        public EmployeeManager()
+            : this(ServiceLocator.Current.GetInstance<IQTecUnitOfWork>())
+        {
+            
         }
 
         #endregion
@@ -53,6 +60,8 @@
         public List<Designation> GetDesignations()
         {
             return this.qTecUnitOfWork.DesignationRepository.GetAll().ToList();
+
+
         }
 
         /// <summary>

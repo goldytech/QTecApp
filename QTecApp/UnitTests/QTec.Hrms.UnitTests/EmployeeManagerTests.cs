@@ -83,7 +83,7 @@ namespace QTec.Hrms.UnitTests
             //var uow = Mock.Create<IQTecUnitOfWork>();
             //Mock.Arrange(() => uow.EmployeeRepository.IsEmailDuplicate("afzal@quipment.in")).CallOriginal();
             var svcLocator = new UnityServiceLocator(container);
-            var uow = svcLocator.GetInstance<IQTecUnitOfWork>();
+           var uow = svcLocator.GetInstance<IQTecUnitOfWork>();
                
             var classunderTest = new EmployeeManager(uow);
 

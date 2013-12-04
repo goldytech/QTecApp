@@ -7,6 +7,8 @@ namespace QTec.Hrms.Web.App_Start
 {
     using System.Web.Http;
 
+    using Microsoft.Practices.ServiceLocation;
+
     using Ninject;
 
     using QTec.Hrms.Business.Contracts;
@@ -29,12 +31,13 @@ namespace QTec.Hrms.Web.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<RepositoryFactories>().To<RepositoryFactories>().InSingletonScope();
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
-            kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>().InSingletonScope();
+            kernel.Bind<IQTecUnitOfWork>().To<QTecUnitOfWork>();
             kernel.Bind<IEmployeeManager>().To<EmployeeManager>();
             kernel.Bind<ILanguageManager>().To<LanguageManager>();
             if (configuration != null)
             {
                 configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+                ServiceLocator.SetLocatorProvider(() => new NinjectServiceLocator(kernel));
             }
         }
     }

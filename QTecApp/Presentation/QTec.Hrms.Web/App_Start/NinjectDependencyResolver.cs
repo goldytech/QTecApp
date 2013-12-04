@@ -20,7 +20,7 @@
         /// <param name="kernel">
         /// The kernel.
         /// </param>
-        internal NinjectDependencyResolver( IKernel kernel)
+        internal NinjectDependencyResolver(IKernel kernel)
             : base(kernel)
         {
             this.kernel = kernel;
