@@ -7,7 +7,7 @@
     using Telerik.Reporting.Services.Engine;
     using Telerik.Reporting.Services.WebApi;
 
-    [RoutePrefix("api")]
+    
     public class ReportsController : ReportsControllerBase
     {
 
