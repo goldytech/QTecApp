@@ -32,6 +32,7 @@ define(['app'], function(app) {
                     return -1;
                 }
                 $scope.personal = empPersonalInfo.data;
+                
                 // do the broadcast 
                 $rootScope.$broadcast("updatepersonalinfo", $scope.personal); //TODO separate out it as other function
                return 1; //success

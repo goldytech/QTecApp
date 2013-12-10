@@ -1,0 +1,13 @@
+﻿<div id="reportViewer1" class="k-widget">
+        loading...
+    </div>
+<script type="text/javascript">
+    $("#reportViewer1")
+        .telerik_ReportViewer({
+            serviceUrl: "/api/reports/",
+            templateUrl: '/app/partials/telerikReportViewerTemplate.html',
+            reportSource: {
+                report: "QTec.Hrms.Reports.Employees, QTec.Hrms.Reports.Employees"
+            }
+        });
+</script>

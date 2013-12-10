@@ -33,6 +33,10 @@ define([], function () {
                 templateUrl: '/Personal/EmployeeEditNew',
                 controller: 'EmployeeEditNewController'
             });
+            $routeProvider.when('/reports/designations', {
+                templateUrl: '/QTecRpts/Designations',
+                
+            });
            $routeProvider.otherwise({
                 redirectTo: '/'
             });

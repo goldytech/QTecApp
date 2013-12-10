@@ -6,7 +6,7 @@
     using QTec.Hrms.Models.Dto;
     using QTec.Hrms.Web.ActionFilters;
 
-    [RoutePrefix("api")]
+   
     public class EmployeeController : ApiController
     {
         /// <summary>

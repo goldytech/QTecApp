@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Telerik HTML5 Report Viewer Templates</title>
+</head>
+    <body>
+        <template id="trv-parameter">
+            <div class='trv-parameter-container k-content' >
+                <div class='trv-parameter-header k-header'>
+                    <div class='trv-parameter-title'></div>
+                </div>
+                <div class='trv-parameter-error k-tooltip-validation k-widget'>
+                    <span class='k-icon k-warning'></span>
+                    <span class='trv-parameter-error-message'></span>
+                </div>
+                <div class='trv-parameter-value'></div>
+            </div>   
+        </template>
+        
+        <template id="trv-parameter-editor-available-values-multiselect">
+            <div class="trv-parameter-editor-available-values-multiselect">
+                <div class="list"></div>
+                <div class="footer">
+                    <a class="select-all k-link" href="#">select all</a>
+                    <a class="select-none k-link" href="#">clear selection</a>
+                </div>
+            </div>
+        </template>
+        
+        <template id="trv-parameter-editor-available-values">
+            <div class="trv-parameter-editor-available-values"></div>
+        </template>
+        
+        <template id="trv-parameter-editor-datetime">
+            <input type="datetime" class="trv-parameter-editor-datetime" />
+        </template>
+        
+        <template id="trv-parameter-editor-text">
+            <input type="text" class="k-textbox trv-parameter-editor-text" />
+        </template>
+        
+        <template id="trv-parameter-editor-number">
+            <input type="number" class="k-textbox trv-parameter-editor-number"/>
+        </template>
+        
+        <template id="trv-parameter-editor-boolean">
+            <input type="checkbox" class="trv-parameter-editor-boolean"/>
+        </template>
+        
+        <template id="trv-parameter-editor-multivalue">
+            <div class="trv-parameter-editor-multivalue">
+                <textArea class="k-textbox"></textArea>
+            </div>
+        </template>
+
+        <template id="trv-report-viewer">
+            <div class="trv-report-viewer" >
+                <div class="trv-side-menu k-content" data-role="telerik_ReportViewer_SideMenu">
+                    <ul>
+                        <li><a data-command="historyBack" title="Navigate Backward" href="#"><i class="icon-mail-reply"></i><span>Navigate Backward</span></a></li>
+                        <li><a data-command="historyForward" title="Navigate Forward" href="#"><i class="icon-mail-forward"></i><span>Navigate Forward</span></a></li>
+                        <li><a data-command="refresh" href="#" title="Refresh"><i class="icon-refresh"></i><span>Refresh</span></a></li>
+                        <li><a data-command="print" title="Print" href="#"><i class="icon-print"></i><span>Print...</span></a></li>
+                        <li>
+                            <a title="Export" href="#" data-command="export"><i class="icon-cloud-download"></i><span>Export</span></a>
+                            <ul data-command-list="export-format-list"></ul>
+                        </li>
+                        <li><a data-command="togglePrintPreview" title="Toggle Print Preview" href="#"><i class="icon-file-text"></i><span>Toggle Print Preview</span></a></li>
+                    </ul>
+                </div>
+                <div class="trv-content-wrapper k-content">
+                    <div class="trv-content">
+                        <div class="trv-document-map k-widget hidden" data-role="telerik_ReportViewer_DocumentMapArea">
+                            <div class="trv-document-map-overlay"></div>
+                        </div>
+                    
+                        <div class="trv-parameters-area k-widget hidden" data-role="telerik_ReportViewer_ParametersArea">
+                            <div class='trv-parameters-area-content'></div>
+                            <div class='trv-parameters-area-footer'>
+                                <button class='k-button trv-parameters-area-preview-button'>Preview</button>
+                            </div>
+                            <div class='trv-error-pane k-tooltip-validation k-widget'>
+                                <div class='trv-error-message'></div>
+                            </div>
+                            <div class="trv-parameters-area-overlay"></div>
+                        </div>
+
+                        <div class="trv-pages-area k-widget" data-role="telerik_ReportViewer_PagesArea">
+                            <div class='trv-page-container'></div>
+                            <div class='trv-error-pane'>
+                                <div class="centered k-tooltip-validation k-widget">
+                                    <div class='trv-error-message'></div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trv-nav">
+                        <ul class="trv-menu-large" data-role="telerik_ReportViewer_MainMenu">
+                            <li><a data-command="historyBack" title="Navigate Backward" href="#"><i class="icon-mail-reply"></i></a></li>
+                            <li><a data-command="historyForward" title="Navigate Forward" href="#"><i class="icon-mail-forward"></i></a></li>
+                    
+                            <li><a data-command="refresh" href="#" title="Refresh"><i class="icon-refresh"></i></a></li>
+                    
+                            <li><a data-command="goToFirstPage" title="First Page" href="#"><i class="icon-fast-backward"></i></a></li>
+                            <li><a data-command="goToPrevPage" title="Previous Page" href="#"><i class="icon-step-backward"></i></a></li>
+
+                            <li>
+                                <input data-role="telerik_ReportViewer_PageNumberInput" type="number" />
+                                <span>&nbsp;/&nbsp;</span>
+                                <span data-role="telerik_ReportViewer_PageCountLabel"></span>
+                            </li>
+
+                            <li><a data-command="goToNextPage" title="Next Page" href="#"><i class="icon-step-forward"></i></a></li>
+                            <li><a data-command="goToLastPage" title="Last Page" href="#"><i class="icon-fast-forward"></i></a></li>
+                
+                            <li><a data-command="togglePrintPreview" title="Toggle Print Preview" href="#"><i class="icon-file-text"></i></a></li>
+
+                            <li>
+                                <a title="Export" href="#" data-command="export"><i class="icon-cloud-download"></i></a>
+                                <ul data-command-list="export-format-list">
+                                </ul>
+                            </li>  
+                              
+                            <li><a data-command="print" title="Print" href="#"><i class="icon-print"></i></a></li>
+                
+                            <li><a data-command="toggleDocumentMap" title="Toggle Document Map" href="#"><i class="icon-book"></i></a></li>
+                            <li><a data-command="toggleParametersArea" title="Toggle Parameters Area" href="#"><i class="icon-filter"></i></a></li>
+                
+                            <li><a title="Zoom In" href="#" data-command="zoomIn"><i class="icon-zoom-in"></i></a></li>
+                            <li><a title="Zoom Out" href="#" data-command="zoomOut"><i class="icon-zoom-out"></i></a></li>
+                            <li><a title="Toggle FullPage/PageWidth" href="#" data-command="toggleZoomMode"><i class="icon-search"></i></a></li>
+                        </ul>
+                        <ul class="trv-menu-small" data-role="telerik_ReportViewer_MainMenu">
+                            <li><a data-command="toggleSideMenu" title="Toggle Side Menu" href="#"><i class="icon-reorder"></i></a></li>
+                            <li>
+                                <input data-role="telerik_ReportViewer_PageNumberInput" type="number" />
+                                <span>&nbsp;/&nbsp;</span>
+                                <span data-role="telerik_ReportViewer_PageCountLabel"></span>
+                            </li>
+                            <li><a data-command="toggleDocumentMap" title="Toggle Document Map" href="#"><i class="icon-book"></i></a></li>
+                            <li><a data-command="toggleParametersArea" title="Toggle Parameters Area" href="#"><i class="icon-filter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+    </body>
+</html>

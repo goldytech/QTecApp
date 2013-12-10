@@ -41,7 +41,7 @@
             
             this.qTecUnitOfWork = qTecUnitOfWork;
 
-           // var myobj = ServiceLocator.Current.GetInstance<IQTecUnitOfWork>();
+           var myobj = ServiceLocator.Current.GetInstance<IQTecUnitOfWork>();
  
         }
 

@@ -1,0 +1,86 @@
+/*
+* TelerikReporting v7.2.13.1016 (http://www.telerik.com/products/reporting.aspx)
+* Copyright 2013 Telerik AD. All rights reserved.
+*
+* Telerik Reporting commercial licenses may be obtained at
+* http://www.telerik.com/purchase/license-agreement/reporting.aspx
+* If you do not own a commercial license, this file shall be governed by the trial license terms.
+*/
+.trv-pages-area .trv-error-pane{left:50%;position:relative;float:left;display:none;max-width:80%}
+.trv-pages-area>.trv-error-pane>.centered{position:relative;float:left;left:-50%;padding:1em}
+.trv-pages-area .trv-page-overlay{display:none;position:absolute;left:0;right:0;top:0;bottom:0;background-color:#fff;opacity:.6}
+.trv-pages-area.loading .trv-page-overlay{display:block}
+.trv-pages-area.error .trv-error-pane{display:block}
+.trv-pages-area .trv-page-container{position:absolute;left:0;right:0;top:0;bottom:0;overflow:auto}
+.trv-pages-area.printpreview .trv-page-container .trv-page-wrapper{margin:20px;text-align:center;position:relative}
+.trv-pages-area.printpreview .trv-page-container .trv-page-wrapper .trv-report-page{border:2px solid #ccc;background-color:#fff;margin-left:auto;margin-right:auto;overflow:hidden;position:relative}
+.trv-pages-area.printpreview .trv-page-container .trv-page-wrapper.active .trv-report-page{border:2px solid #ccc}
+.trv-pages-area.interactive .trv-page-container .trv-page-wrapper{text-align:center;position:relative}
+.trv-pages-area.interactive .trv-page-container .trv-page-wrapper .trv-report-page{background-color:#fff;overflow:hidden;position:relative;padding:1em}
+.trv-pages-area.interactive .trv-page-container .trv-page-wrapper.active .trv-report-page{border:0}.trv-parameter-container .trv-parameter-title{font-weight:700;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trv-parameters-area .trv-parameters-area-overlay{display:none;position:absolute;top:0;left:0;right:0;bottom:0;background-color:#fff;opacity:.6}
+.trv-parameters-area.loading .trv-parameters-area-overlay{display:block}
+.trv-parameter-container .trv-parameter-error{font-size:8pt}
+.trv-parameters-area .trv-parameters-area-content{position:absolute;left:0;right:0;top:0;bottom:0;overflow:auto}
+.trv-parameters-area .trv-parameters-area-footer{position:absolute;left:0;right:0;bottom:0;height:3em;display:none}
+.trv-parameters-area.preview .trv-parameters-area-content{bottom:3em}
+.trv-parameters-area.preview .trv-parameters-area-footer{display:block}
+.trv-parameters-area .trv-error-pane{position:absolute;width:100%;top:0;left:0;display:none}
+.trv-parameters-area.error .trv-error-pane{display:block}
+.trv-parameters-area .trv-parameters-area-preview-button{position:absolute;top:.5em;left:.4em}
+.trv-parameters-area .trv-parameter-container{margin:.3em;margin-bottom:10px;padding:.1em}
+.trv-parameter-title{}
+.trv-parameter-header{width:100%;position:relative}
+.trv-parameter-error{padding:3px;margin-bottom:3px}
+.trv-parameter-value{}
+.trv-parameter-error-message{vertical-align:middle;margin-left:3px}
+.trv-parameter-editor-available-values-multiselect{}
+.trv-parameter-editor-available-values-multiselect .list{overflow:auto}
+.trv-parameter-editor-available-values-multiselect .footer{font-size:8pt}
+.trv-parameter-editor-available-values-multiselect .select-all{}
+.trv-parameter-editor-available-values-multiselect .select-none{}
+.trv-parameter-editor-available-values{}
+.trv-parameter-editor-datetime{width:100%}
+.trv-parameter-editor-text{width:100%}
+.trv-parameter-editor-number{width:100%}
+.trv-parameter-editor-multivalue textarea{width:100%;resize:none}.trv-report-viewer{position:relative;width:100%;height:100%;overflow:hidden}
+.trv-side-menu{overflow:auto;position:absolute;top:0;bottom:0;left:0;display:none}
+.trv-side-menu>ul{border-right:0 none transparent}
+.trv-side-menu li>a{border-bottom:0 none transparent!important}
+.trv-side-menu span{margin-left:1em}
+.trv-side-menu a{background-image:none!important}
+.trv-content-wrapper{position:absolute;left:0;right:0;top:0;bottom:0;transition:100ms}
+.trv-nav{position:absolute;top:.1em;left:.1em;right:.1em;border-bottom:0 none red}
+.trv-nav>ul{position:relative}
+.trv-nav li{border-width:0!important;border-style:none!important}
+.trv-nav input{width:2em;height:99%}
+.trv-content{position:absolute;top:2.5em;bottom:0;left:0;right:0;overflow:hidden}
+.trv-menu-large{display:block}
+.trv-menu-small{display:none}
+.trv-document-map{position:absolute;width:15em;height:auto;top:.1em;bottom:.1em;left:.1em;z-index:10}
+.trv-document-map>div{position:absolute;top:0;left:0;right:0;bottom:0}
+.trv-document-map .trv-document-map-overlay{display:none;background:#fff;opacity:.6;z-index:100000}
+.trv-document-map.loading .trv-document-map-overlay{display:block}
+.trv-document-map.hidden{display:none}
+.trv-parameters-area{position:absolute;width:15em;height:auto;top:.1em;bottom:.1em;right:.1em;z-index:10}
+.trv-parameters-area.hidden{display:none}
+.trv-pages-area{position:absolute;height:auto;top:.1em;bottom:.1em;left:15.3em;right:15.3em}
+.trv-parameters-area.hidden~.trv-pages-area
+{right:.1em}
+.trv-document-map.hidden~.trv-pages-area
+{left:.1em}
+.trv-error-pane{padding:1em;font-size:.7em}
+.trv-report-viewer input[type=number]::-webkit-inner-spin-button,.trv-report-viewer input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+@media screen and (max-width:28.75em){}
+@media screen and (max-width:40.5em){.trv-side-menu{display:block;padding-top:.1em;left:-3em;transition:100ms}
+.trv-side-menu-visible .trv-side-menu{left:0;width:15em;padding-left:0;transition:500ms}
+.trv-side-menu-visible .trv-content-wrapper{left:15em;right:-15em;transition:500ms}
+.trv-menu-large{display:none}
+.trv-menu-small{display:block}
+.trv-document-map{position:absolute;width:auto;top:.1em;left:0;right:0;bottom:0}
+.trv-parameters-area{position:absolute;width:auto;top:.1em;left:0;right:0;bottom:0}
+.trv-pages-area{position:absolute;width:auto;top:.1em;left:0;right:0;bottom:0}
+.trv-nav{left:0;right:0}
+.trv-parameters-area.hidden~.trv-pages-area{right:0}
+.trv-document-map.hidden~.trv-pages-area
+{left:0}}

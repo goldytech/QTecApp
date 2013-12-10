@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-
-namespace QTec.Hrms.Web
+﻿namespace QTec.Hrms.Web
 {
+    using System.Linq;
+    using System.Web.Http;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
 
@@ -12,7 +10,14 @@ namespace QTec.Hrms.Web
     {
         public static void Register(HttpConfiguration config)
         {
+            
+        
+            //// Registering Attribute based routing for WebApi 2
             config.MapHttpAttributeRoutes();
+
+            //// Mapping Telerik Reporting REST service
+
+            Telerik.Reporting.Services.WebApi.ReportsControllerConfiguration.RegisterRoutes(config);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
@@ -24,7 +29,7 @@ namespace QTec.Hrms.Web
             //    name: "EmployeeLanguagesRoute",
             //    routeTemplate: "api/{controller}/{id}/Languages",
             //    defaults: new { id = 0, controller = "Employees", action = "GetLanguages" });
-           
+            
             
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

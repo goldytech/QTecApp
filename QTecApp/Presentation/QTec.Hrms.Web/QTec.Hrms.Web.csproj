@@ -147,6 +147,14 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Reporting, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\Reporting Q3 2013\Bin\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Reporting.Services.WebApi, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\Reporting Q3 2013\Bin\Telerik.Reporting.Services.WebApi.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionFilters\CacheAttribute.cs" />
@@ -158,6 +166,7 @@
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\QTecRptsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,6 +175,7 @@
     <Compile Include="WebApi\EmpPersonalInfoController.cs" />
     <Compile Include="WebApi\LanguageController.cs" />
     <Compile Include="WebApi\PersonalController.cs" />
+    <Compile Include="WebApi\ReportsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -188,11 +198,13 @@
     <Content Include="app\directives\wcUnique.js" />
     <Content Include="app\filters\fluencyFilter.js" />
     <Content Include="app\filters\nameCityStateFilter.js" />
+    <Content Include="app\partials\designationrpt.html" />
     <Content Include="app\partials\dialog.html" />
     <Content Include="app\partials\emplanguages.html" />
     <Content Include="app\partials\emppersonal.html" />
     <Content Include="app\partials\menu.html" />
     <Content Include="app\partials\modal.html" />
+    <Content Include="app\partials\telerikReportViewerTemplate.html" />
     <Content Include="app\services\configService.js" />
     <Content Include="app\services\dataService.js" />
     <Content Include="app\services\dialogService.js" />
@@ -218,6 +230,7 @@
     <Content Include="Content\images\report.png" />
     <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\ReportViewer-7.2.13.1016.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -306,6 +319,7 @@
     <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\ReportViewer-7.2.13.1016.min.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\to%24q.js" />
     <Content Include="Scripts\TweenMax.min.js" />
@@ -320,6 +334,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Personal\EmployeeEditNew.cshtml" />
+    <Content Include="Views\QTecRpts\Designations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
